@@ -4,9 +4,11 @@
   top: 0px;
 }
 
+/* hero section */
+
 .home-hero-img-container {
   position: relative;
-  width: 100vw;
+  width: 98.9vw;
 }
 
 .home-hero-img {
@@ -30,4 +32,46 @@
   top: 19%;
   left: 19%;
   font-size: 9em;
+}
+
+/* Business Section */
+.home-business-container {
+  width: 75%;
+  margin: 60px auto;
+}
+
+.home-business-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.home-business-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 100px;
+  list-style: none;
+}
+
+.home-business-img-container {
+  width: 300px;
+}
+
+.home-business-img {
+  width: 100%;
+  height: 300px;
+}
+
+.home-business-card {
+  box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.3);
+}
+
+.home-business-card-title {
+  text-align: center;
+  padding: 10px;
+}
+
+.home-business-card-content {
+  padding: 10px;
 }
