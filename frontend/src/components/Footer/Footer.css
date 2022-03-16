@@ -1,0 +1,33 @@
+.footer-container {
+  background-color: var(--blue);
+  color: white;
+  height: 200px;
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 50px;
+}
+
+.tech-list,
+.link-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  list-style: none;
+}
+
+.foot-link-item {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid white;
+}
+
+.foot-link-item:hover {
+  transition-duration: 0.03s;
+  transition: ease-out;
+  background-color: white;
+  color: var(--blue);
+}
