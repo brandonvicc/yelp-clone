@@ -9,6 +9,7 @@
   padding-left: 40px;
   padding-right: 40px;
   height: 90px;
+  z-index: 1;
 }
 
 .nav-user-list,
@@ -32,19 +33,19 @@
 
 .nav-link {
   text-decoration: none;
-  color: black;
+  color: white;
   padding: 5px;
 }
 
 .nav-link:hover {
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid white;
 }
 
 .nav-user-profile-btn {
-  /* border: 1px solid black; */
+  /* border: 1px solid white; */
   border: none;
   background-color: transparent;
-  color: black;
+  color: white;
   padding: 10px;
   cursor: pointer;
   border-radius: 5px;
@@ -53,9 +54,9 @@
 }
 
 .nav-user-profile-btn:hover {
-  /* border: 1px solid black; */
-  background-color: black;
-  color: white;
+  /* border: 1px solid white; */
+  background-color: white;
+  color: black;
   transition: ease-out;
   transition-duration: 0.5s;
 }

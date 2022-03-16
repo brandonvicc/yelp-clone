@@ -1,0 +1,33 @@
+.home-container {
+  z-index: -1;
+  position: absolute;
+  top: 0px;
+}
+
+.home-hero-img-container {
+  position: relative;
+  width: 100vw;
+}
+
+.home-hero-img {
+  width: 100%;
+  height: 600px;
+  z-index: -1;
+}
+
+.hero-cover {
+  position: absolute;
+  top: 0px;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.home-header {
+  color: var(--blue);
+  position: absolute;
+  top: 19%;
+  left: 19%;
+  font-size: 9em;
+}

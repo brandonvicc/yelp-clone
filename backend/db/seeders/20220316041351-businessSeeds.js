@@ -18,7 +18,8 @@ module.exports = {
           zipcode: "98503",
           country: "United States",
           avg_review: 0,
-          img_link: "https://unsplash.com/photos/PhYq704ffdA",
+          img_link:
+            "https://images.unsplash.com/photo-1563286094-6e420626b6f3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=875&q=80",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -31,7 +32,8 @@ module.exports = {
           zipcode: "65401",
           country: "United States",
           avg_review: 0,
-          img_link: "https://unsplash.com/photos/ub69XEloceY",
+          img_link:
+            "https://images.unsplash.com/photo-1638786245283-98cb5933c49b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -45,7 +47,7 @@ module.exports = {
           country: "United States",
           avg_review: 0,
           img_link:
-            "https://www.google.com/url?sa=i&url=https%3A%2F%2Ficanhas.cheezburger.com%2Flolcats%2Ftag%2Ftherapy&psig=AOvVaw07S9Z0enRDWy0ygiGVvjYj&ust=1647533561000000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCOj60_2Cy_YCFQAAAAAdAAAAABAF",
+            "https://images.unsplash.com/photo-1548366086-7f1b76106622?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=376&q=80",
           createdAt: new Date(),
           updatedAt: new Date(),
         },

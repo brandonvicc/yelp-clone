@@ -1,7 +1,7 @@
 .login-btn {
-  border: 1px solid black;
+  border: 1px solid white;
   background-color: transparent;
-  color: black;
+  color: white;
   padding: 10px;
   cursor: pointer;
   border-radius: 5px;
@@ -10,9 +10,9 @@
 }
 
 .login-btn:hover {
-  border: 2px solid black;
-  background-color: black;
-  color: white;
+  border: 2px solid white;
+  background-color: white;
+  color: black;
   transition: ease-out;
   transition-duration: 0.3s;
 }
