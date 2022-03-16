@@ -8,10 +8,18 @@ const { Business } = require("../../db/models");
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
-  const businesses = await Business.findAll();
-  console.log(businesses);
-  return res.json({ businesses });
-});
+router.get(
+  "/",
+  asyncHandler(async (req, res) => {
+    const businesses = await Business.findAll();
+    console.log(businesses);
+    return res.json({ businesses });
+  })
+);
+
+router.post(
+  "/new",
+  asyncHandler(async (req, res) => {})
+);
 
 module.exports = router;

@@ -5,26 +5,26 @@ import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import "./Navigation.css";
 
-function Navigation({ isLoaded }) {
+function Navigation({ isLoaded, color }) {
   const sessionUser = useSelector((state) => state.session.user);
 
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
       <ul className="nav-user-list">
-        <li className="nav-user-link">
-          <ProfileButton user={sessionUser} />
+        <li className={`nav-user-link${color}`}>
+          <ProfileButton user={sessionUser} color={color} />
         </li>
       </ul>
     );
   } else {
     sessionLinks = (
       <ul className="nav-user-list">
-        <li className="nav-user-link">
-          <LoginFormModal />
+        <li className={`nav-user-link${color}`}>
+          <LoginFormModal color={color} />
         </li>
-        <li className="nav-user-link">
-          <NavLink className={"nav-link"} to="/signup">
+        <li className={`nav-user-link${color}`}>
+          <NavLink className={`nav-link${color}`} to="/signup">
             Sign Up
           </NavLink>
         </li>
@@ -36,17 +36,17 @@ function Navigation({ isLoaded }) {
     <div className="nav-bar-container">
       <ul className="nav-list">
         <li className="nav-link-item">
-          <NavLink className={"nav-link"} to={"/"}>
+          <NavLink className={`nav-link${color}`} to={"/"}>
             Home
           </NavLink>
         </li>
         <li className="nav-link-item">
-          <NavLink className={"nav-link"} to={"/"}>
+          <NavLink className={`nav-link${color}`} to={"/"}>
             Write a Review
           </NavLink>
         </li>
         <li className="nav-link-item">
-          <NavLink className={"nav-link"} to={"/"}>
+          <NavLink className={`nav-link${color}`} to={"/"}>
             Post a Business
           </NavLink>
         </li>

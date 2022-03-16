@@ -60,3 +60,34 @@
   transition: ease-out;
   transition-duration: 0.5s;
 }
+
+/* nav bar black */
+.nav-link-black {
+  text-decoration: none;
+  color: black;
+  padding: 5px;
+}
+
+.nav-link-black:hover {
+  border-bottom: 2px solid black;
+}
+
+.nav-user-profile-btn-black {
+  border: 1px solid black;
+  border: none;
+  background-color: transparent;
+  color: black;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 50px;
+  font-size: 1.2em;
+}
+
+.nav-user-profile-btn-black:hover {
+  border: 1px solid black;
+  background-color: black;
+  color: white;
+  transition: ease-out;
+  transition-duration: 0.5s;
+}
