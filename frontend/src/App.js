@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import Footer from "./components/Footer/Footer";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import HomePage from "./components/HomePage/HomePage";
 // import { Modal } from "./context/Modal";
 function App() {
   const dispatch = useDispatch();
@@ -32,9 +33,16 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          <Route path="/businesses">
+            <HomePage />
+          </Route>
+          <Route exact path="/">
+            <Redirect to={"/businesses"} />
+          </Route>
+          <Route>404 not found</Route>
         </Switch>
       )}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
