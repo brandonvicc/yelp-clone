@@ -3,15 +3,20 @@ import { csrfFetch } from "./csrf";
 const GET_ALL = "business/GET_ALL";
 const NEW = "business/NEW";
 const DELETE = "business/DELETE";
+const UPDATE = "business/UPDATE";
 
 const allBusinesses = (businesses) => ({
   type: GET_ALL,
   businesses,
 });
 
-
 const addBusiness = (business) => ({
   type: NEW,
+  business,
+});
+
+const businessUpdated = (business) => ({
+  type: UPDATE,
   business,
 });
 
@@ -42,7 +47,6 @@ export const getAll = () => async (dispatch) => {
 };
 
 export const newBusiness = (payload) => async (dispatch) => {
-  console.log(payload);
   const response = await csrfFetch("/api/businesses/", {
     method: "POST",
     body: JSON.stringify(payload),
@@ -53,6 +57,18 @@ export const newBusiness = (payload) => async (dispatch) => {
     dispatch(addBusiness(data.business));
   }
   return response;
+};
+
+export const updateBusiness = (business) => async (dispatch) => {
+  const response = await csrfFetch(`/api/businesses/${business.id}`, {
+    method: "PUT",
+    body: JSON.stringify(business),
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(businessUpdated(data.business));
+  }
 };
 
 const initialState = {};
@@ -76,6 +92,8 @@ function reducer(state = initialState, action) {
       return newState;
     case NEW:
       newState = { ...action.business };
+      return newState;
+    case UPDATE:
       return newState;
     default:
       return state;

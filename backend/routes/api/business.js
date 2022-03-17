@@ -3,7 +3,7 @@ const { check } = require("express-validator");
 const asyncHandler = require("express-async-handler");
 
 const { handleValidationErrors } = require("../../utils/validation");
-const { requireAuth } = require("../../utils/auth");
+const { requireAuth, restoreUser } = require("../../utils/auth");
 const { Business } = require("../../db/models");
 
 const router = express.Router();
@@ -109,6 +109,25 @@ router.delete(
     Business.destroy({ where: { id: business.id } });
 
     return res.json({ business });
+  })
+);
+
+router.put(
+  "/:id",
+  requireAuth,
+  restoreUser,
+  asyncHandler(async (req, res) => {
+    const id = req.body.id;
+    delete req.body.id;
+    await Business.update(req.body, {
+      where: { id },
+      returning: true,
+      plain: true,
+    });
+
+    const business = await Business.findByPk(id);
+
+    return res.json(business);
   })
 );
 
