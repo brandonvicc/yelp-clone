@@ -75,3 +75,18 @@
 .home-business-card-content {
   padding: 10px;
 }
+
+.home-delete-btn {
+  color: rgb(255, 0, 0);
+  border: 2px solid rgb(255, 0, 0);
+  background-color: white;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.home-delete-btn:hover {
+  color: white;
+  background-color: rgb(255, 0, 0);
+  transition: ease-out;
+  transition-duration: 0.3s;
+}
