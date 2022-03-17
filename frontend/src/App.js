@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Route, Switch, Redirect } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
-import Footer from "./components/Footer/Footer";
+// import Footer from "./components/Footer/Footer";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage/HomePage";

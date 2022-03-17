@@ -22,4 +22,16 @@ router.post(
   asyncHandler(async (req, res) => {})
 );
 
+router.delete(
+  "/:id",
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    const business = await Business.findByPk(req.params.id);
+    if (!business) throw new Error("No business with that id");
+    Business.destroy({ where: { id: business.id } });
+
+    return res.json({ business });
+  })
+);
+
 module.exports = router;
