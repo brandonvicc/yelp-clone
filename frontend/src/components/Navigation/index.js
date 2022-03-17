@@ -46,7 +46,7 @@ function Navigation({ isLoaded, color }) {
           </NavLink>
         </li>
         <li className="nav-link-item">
-          <NavLink className={`nav-link${color}`} to={"/"}>
+          <NavLink className={`nav-link${color}`} to={"/businesses/new"}>
             Post a Business
           </NavLink>
         </li>
