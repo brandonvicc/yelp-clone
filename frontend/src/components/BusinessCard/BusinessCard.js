@@ -26,7 +26,9 @@ const BusinessCard = ({ business }) => {
         <p>Rating: {business.avg_review}</p>
       </div>
       {curr_user?.id === business.userId && (
-        <button onClick={handleDelete}>Delete</button>
+        <button className="home-delete-btn" onClick={handleDelete}>
+          Delete
+        </button>
       )}
     </li>
   );
