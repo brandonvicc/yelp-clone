@@ -93,10 +93,9 @@ router.post(
       avg_review,
     });
 
-    console.log("\n\n\n Business Created \n\n\n");
-    console.log("\n\n\n", newBusiness, "\n\n\n\n");
-
     const business = await Business.findByPk(newBusiness.id);
+    console.log("\n\n\n Business Created \n\n\n");
+    console.log("\n\n\n", business, "\n\n\n\n");
     return res.json({ business });
   })
 );

@@ -23,7 +23,7 @@ const NewBusinessForm = ({ current_user }) => {
     console.log("submitted form");
     e.preventDefault();
     setErrors([]);
-    dispatch(
+    return dispatch(
       newBusiness({
         name,
         address,
@@ -38,7 +38,10 @@ const NewBusinessForm = ({ current_user }) => {
         avg_review: 0,
       })
     )
-      .then((data) => history.push("/businesses/" + data.id))
+      .then((data) => {
+        console.log(data);
+        history.push("/");
+      })
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
