@@ -1,6 +1,6 @@
 import * as businessActions from "../../store/business";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, NavLink } from "react-router-dom";
 
 const BusinessCard = ({ business }) => {
   const curr_user = useSelector((state) => state.session.user);
@@ -26,9 +26,14 @@ const BusinessCard = ({ business }) => {
         <p>Rating: {business.avg_review}</p>
       </div>
       {curr_user?.id === business.userId && (
-        <button className="home-delete-btn" onClick={handleDelete}>
-          Delete
-        </button>
+        <div className="home-business-card-actions">
+          <button className="home-delete-btn" onClick={handleDelete}>
+            Delete
+          </button>
+          <NavLink to={`/businesses/${business.id}/edit`}>
+            <button className="home-edit-btn">Edit</button>
+          </NavLink>
+        </div>
       )}
     </li>
   );
