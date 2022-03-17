@@ -7,6 +7,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage/HomePage";
+import NewBusiness from "./components/NewBusiness/NewBusiness";
 // import { Modal } from "./context/Modal";
 function App() {
   const dispatch = useDispatch();
@@ -34,9 +35,13 @@ function App() {
             <Navigation isLoaded={isLoaded} color={"-black"} />
             <SignupFormPage />
           </Route>
-          <Route path="/businesses">
+          <Route exact path="/businesses">
             <Navigation isLoaded={isLoaded} color={""} />
             <HomePage />
+          </Route>
+          <Route path="/businesses/new">
+            <Navigation isLoaded={isLoaded} color={"-black"} />
+            <NewBusiness />
           </Route>
           <Route exact path="/">
             <Redirect to={"/businesses"} />

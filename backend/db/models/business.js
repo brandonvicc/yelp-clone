@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Business.belongsTo(models.User, { foreignKey: "userId" });
     }
   }
   Business.init(
@@ -48,12 +49,12 @@ module.exports = (sequelize, DataTypes) => {
         validate: {
           len: [4, 30],
         },
-        zipcode: {
-          type: DataTypes.STRING(5),
-          allowNull: false,
-          validate: {
-            len: [5, 5],
-          },
+      },
+      zipcode: {
+        type: DataTypes.STRING(5),
+        allowNull: false,
+        validate: {
+          len: [5, 5],
         },
       },
       lat: DataTypes.INTEGER,

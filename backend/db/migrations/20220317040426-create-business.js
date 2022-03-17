@@ -28,6 +28,13 @@ module.exports = {
         type: Sequelize.STRING(30),
         allowNull: false,
       },
+      zipcode: {
+        type: Sequelize.STRING(5),
+        allowNull: false,
+        validate: {
+          len: [5, 5],
+        },
+      },
       country: {
         type: Sequelize.STRING(30),
         allowNull: false,
