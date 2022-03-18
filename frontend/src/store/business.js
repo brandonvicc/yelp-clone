@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 const GET_ALL = "business/GET_ALL";
 const NEW = "business/NEW";
 const DELETE = "business/DELETE";
+const ONE_DELETE = "business/ONE_DELETE";
 const UPDATE = "business/UPDATE";
 const GET_ONE = "business/GET_ONE";
 
@@ -31,6 +32,10 @@ const businessDeleted = (business) => ({
   business,
 });
 
+const oneDeleted = () => ({
+  type: ONE_DELETE,
+});
+
 export const getOneBusiness = (id) => async (dispatch) => {
   const response = await csrfFetch(`/api/businesses/${id}`);
   if (response.ok) {
@@ -47,6 +52,16 @@ export const deleteBusiness = (id) => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     dispatch(businessDeleted(data));
+  }
+};
+export const deleteOneBusiness = (id) => async (dispatch) => {
+  const response = await csrfFetch(`/api/businesses/${id}`, {
+    method: "DELETE",
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(oneDeleted());
   }
 };
 
@@ -106,6 +121,8 @@ function reducer(state = initialState, action) {
         (business) => business.id !== action.business.id
       );
       return newState;
+    case ONE_DELETE:
+      return {};
     case NEW:
       newState = { ...action.business };
       return newState;
