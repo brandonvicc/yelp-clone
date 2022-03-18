@@ -1,6 +1,6 @@
 import * as businessActions from "../../store/business";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, NavLink } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const BusinessCard = ({ business }) => {
   const curr_user = useSelector((state) => state.session.user);
@@ -11,6 +11,12 @@ const BusinessCard = ({ business }) => {
     e.preventDefault();
     await dispatch(businessActions.deleteBusiness(business.id));
     history.push("/");
+  };
+
+  const handleEdit = async (e) => {
+    e.preventDefault();
+    await dispatch(businessActions.getOneBusiness(business.id));
+    history.push(`/businesses/${business.id}/edit`);
   };
   return (
     <li className="home-business-card">
@@ -30,9 +36,9 @@ const BusinessCard = ({ business }) => {
           <button className="home-delete-btn" onClick={handleDelete}>
             Delete
           </button>
-          <NavLink to={`/businesses/${business.id}/edit`}>
-            <button className="home-edit-btn">Edit</button>
-          </NavLink>
+          <button className="home-edit-btn" onClick={handleEdit}>
+            Edit
+          </button>
         </div>
       )}
     </li>

@@ -1,28 +1,33 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { updateBusiness } from "../../../store/business";
+import { updateBusiness, getOneBusiness } from "../../../store/business";
 
 const BusinessEditForm = () => {
-  const [name, setName] = useState("");
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [country, setCountry] = useState("");
-  const [zipcode, setZipcode] = useState("");
-  const [lat, setLat] = useState(0);
-  const [lng, setLng] = useState(0);
-  const [img_link, setImgLink] = useState("");
-  const [errors, setErrors] = useState([]);
-
   const dispatch = useDispatch();
   const history = useHistory();
 
   const { id } = useParams();
-  const business = useSelector((state) => state.business);
   const current_user = useSelector((state) => state.session.user);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    dispatch(getOneBusiness(id));
+  }, [dispatch, id]);
+
+  const business = useSelector((state) => state.business);
+  const [name, setName] = useState(business.name);
+  const [address, setAddress] = useState(business.address);
+  const [city, setCity] = useState(business.city);
+  const [state, setState] = useState(business.state);
+  const [country, setCountry] = useState(business.country);
+  const [zipcode, setZipcode] = useState(business.zipcode);
+  const [lat, setLat] = useState(business.lat);
+  const [lng, setLng] = useState(business.lng);
+  const [img_link, setImgLink] = useState(business.img_link);
+  const [errors, setErrors] = useState([]);
+
+  //   useEffect(() => {
+  //   }, [business]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -45,7 +50,6 @@ const BusinessEditForm = () => {
       })
     )
       .then((data) => {
-        console.log(data);
         history.push("/");
       })
       .catch(async (res) => {
@@ -150,7 +154,7 @@ const BusinessEditForm = () => {
             className="signup-input"
           />
         </label>
-        <input type="submit" value="Add your Business" />
+        <input type="submit" value="Edit your Business" />
       </form>
     </div>
   );

@@ -4,10 +4,16 @@ const GET_ALL = "business/GET_ALL";
 const NEW = "business/NEW";
 const DELETE = "business/DELETE";
 const UPDATE = "business/UPDATE";
+const GET_ONE = "business/GET_ONE";
 
 const allBusinesses = (businesses) => ({
   type: GET_ALL,
   businesses,
+});
+
+const oneBusiness = (business) => ({
+  type: GET_ONE,
+  business,
 });
 
 const addBusiness = (business) => ({
@@ -24,6 +30,14 @@ const businessDeleted = (business) => ({
   type: DELETE,
   business,
 });
+
+export const getOneBusiness = (id) => async (dispatch) => {
+  const response = await csrfFetch(`/api/businesses/${id}`);
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(oneBusiness(data.business));
+  }
+};
 
 export const deleteBusiness = (id) => async (dispatch) => {
   const response = await csrfFetch(`/api/businesses/${id}`, {
@@ -81,8 +95,10 @@ function reducer(state = initialState, action) {
       action.businesses.businesses.forEach((business) => {
         newState[business.id] = { ...business };
       });
-
       return { ...action.businesses, ...newState };
+    case GET_ONE:
+      newState = { ...action.business };
+      return newState;
     case DELETE:
       newState = { ...state };
       delete newState[action.business.id];
@@ -94,6 +110,7 @@ function reducer(state = initialState, action) {
       newState = { ...action.business };
       return newState;
     case UPDATE:
+      newState = { ...action.business };
       return newState;
     default:
       return state;
