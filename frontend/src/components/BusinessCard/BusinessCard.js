@@ -1,6 +1,6 @@
 import * as businessActions from "../../store/business";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, NavLink } from "react-router-dom";
 
 const BusinessCard = ({ business }) => {
   const curr_user = useSelector((state) => state.session.user);
@@ -20,7 +20,9 @@ const BusinessCard = ({ business }) => {
   };
   return (
     <li className="home-business-card">
-      <h3 className="home-business-card-title">{business.name}</h3>
+      <NavLink to={`/businesses/${business.id}`}>
+        <h3 className="home-business-card-title">{business.name}</h3>
+      </NavLink>
       <div className="home-business-img-container">
         <img
           className="home-business-img"
