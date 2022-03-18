@@ -12,6 +12,12 @@ const BusinessCard = ({ business }) => {
     await dispatch(businessActions.deleteBusiness(business.id));
     history.push("/");
   };
+
+  const handleEdit = async (e) => {
+    e.preventDefault();
+    await dispatch(businessActions.getOneBusiness(business.id));
+    history.push(`/businesses/${business.id}/edit`);
+  };
   return (
     <li className="home-business-card">
       <h3 className="home-business-card-title">{business.name}</h3>
@@ -26,9 +32,14 @@ const BusinessCard = ({ business }) => {
         <p>Rating: {business.avg_review}</p>
       </div>
       {curr_user?.id === business.userId && (
-        <button className="home-delete-btn" onClick={handleDelete}>
-          Delete
-        </button>
+        <div className="home-business-card-actions">
+          <button className="home-delete-btn" onClick={handleDelete}>
+            Delete
+          </button>
+          <button className="home-edit-btn" onClick={handleEdit}>
+            Edit
+          </button>
+        </div>
       )}
     </li>
   );

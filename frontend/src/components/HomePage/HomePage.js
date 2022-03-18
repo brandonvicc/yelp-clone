@@ -10,7 +10,6 @@ const HomePage = () => {
   const businesses = useSelector((state) => state.business.businesses);
   const dispatch = useDispatch();
 
-  console.log(businesses);
   useEffect(() => {
     dispatch(businessActions.getAll());
   }, [dispatch]);
