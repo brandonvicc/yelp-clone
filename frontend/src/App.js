@@ -9,6 +9,7 @@ import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage/HomePage";
 import NewBusiness from "./components/NewBusiness/NewBusiness";
 import BusinessEditPage from "./components/BusinessEditPage/BusinessEditPage";
+import BusinessProfile from "./components/BusinessProfile/BusinessProfile";
 // import { Modal } from "./context/Modal";
 function App() {
   const dispatch = useDispatch();
@@ -47,6 +48,10 @@ function App() {
           <Route path="/businesses/:id/edit">
             <Navigation isLoaded={isLoaded} color={"-black"} />
             <BusinessEditPage />
+          </Route>
+          <Route exact path="/businesses/:id">
+            <Navigation isLoaded={isLoaded} color={"-black"} />
+            <BusinessProfile />
           </Route>
           <Route exact path="/">
             <Redirect to={"/businesses"} />

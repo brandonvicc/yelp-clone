@@ -97,7 +97,7 @@ function reducer(state = initialState, action) {
       });
       return { ...action.businesses, ...newState };
     case GET_ONE:
-      newState = { ...action.business };
+      newState = { business: { ...action.business } };
       return newState;
     case DELETE:
       newState = { ...state };
