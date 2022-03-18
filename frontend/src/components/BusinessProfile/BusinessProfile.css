@@ -1,0 +1,74 @@
+.oneBus-img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.oneBus-img {
+  max-height: 585px;
+}
+
+.oneBus-info-header {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.oneBus-info-content-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 50px;
+  height: 200px;
+}
+.oneBus-info-content,
+.oneBus-info-actions {
+  width: 300px;
+}
+
+.oneBus-info-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.oneBus-delete-btn {
+  color: rgb(255, 0, 0);
+  border: 2px solid rgb(255, 0, 0);
+  background-color: white;
+  padding: 15px;
+  width: 100px;
+  font-size: 1.1em;
+  cursor: pointer;
+}
+
+.oneBus-delete-btn:hover {
+  color: white;
+  background-color: rgb(255, 0, 0);
+  transition: ease-out;
+  transition-duration: 0.3s;
+}
+.oneBus-edit-btn {
+  color: var(--blue);
+  border: 2px solid var(--blue);
+  background-color: white;
+  padding: 15px;
+  width: 100px;
+  font-size: 1.1em;
+  cursor: pointer;
+}
+
+.oneBus-edit-btn:hover {
+  color: white;
+  background-color: var(--blue);
+  transition: ease-out;
+  transition-duration: 0.3s;
+}
+
+.oneBus-info-content-header {
+  margin-bottom: 20px;
+  font-size: 1.5em;
+}
+
+.oneBus-info {
+  font-size: 1.1em;
+}

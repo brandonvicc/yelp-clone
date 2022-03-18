@@ -53,7 +53,7 @@ const BusinessEditForm = () => {
       })
     )
       .then((data) => {
-        history.push("/");
+        history.push(`/businesses/${business.id}`);
       })
       .catch(async (res) => {
         const data = await res.json();
