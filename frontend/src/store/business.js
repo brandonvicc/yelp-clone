@@ -60,7 +60,7 @@ export const deleteOneBusiness = (id) => async (dispatch) => {
   });
 
   if (response.ok) {
-    const data = await response.json();
+    // const data = await response.json();
     dispatch(oneDeleted());
   }
 };

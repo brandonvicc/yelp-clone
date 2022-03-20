@@ -4,14 +4,19 @@ const asyncHandler = require("express-async-handler");
 
 const { handleValidationErrors } = require("../../utils/validation");
 const { requireAuth, restoreUser } = require("../../utils/auth");
-const { Business } = require("../../db/models");
+const { Business, Review, User } = require("../../db/models");
 
 const router = express.Router();
 
 router.get(
   "/",
   asyncHandler(async (req, res) => {
-    const businesses = await Business.findAll();
+    const businesses = await Business.findAll({
+      include: {
+        model: Review,
+        include: User,
+      },
+    });
     return res.json({ businesses });
   })
 );
@@ -19,7 +24,13 @@ router.get(
 router.get(
   "/:id",
   asyncHandler(async (req, res) => {
-    const business = await Business.findOne({ where: { id: req.params.id } });
+    const business = await Business.findOne({
+      where: { id: req.params.id },
+      include: {
+        model: Review,
+        include: User,
+      },
+    });
     return res.json({ business });
   })
 );
