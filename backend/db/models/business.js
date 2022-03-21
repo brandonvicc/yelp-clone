@@ -7,6 +7,13 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
+
+    avgRating(reviews) {
+      let total = 0;
+      reviews.forEach((review) => (total += review.review));
+      return total / reviews.length;
+    }
+
     static associate(models) {
       // define association here
       Business.belongsTo(models.User, { foreignKey: "userId" });
@@ -48,7 +55,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [4, 30],
+          len: [3, 30],
         },
       },
       zipcode: {

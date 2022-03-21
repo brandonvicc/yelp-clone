@@ -1,19 +1,34 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { deleteOneBusiness, getOneBusiness } from "../../store/business";
 import "./BusinessProfile.css";
 import ReviewCard from "./ReviewCard/ReviewCard";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import ReviewCreateModal from "../ReviewCreateModal";
 
 const BusinessProfile = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const business = useSelector((state) => state.business.business);
+  const curr_user = useSelector((state) => state.session.user);
   const { id } = useParams();
+  const [avg, setAvg] = useState();
 
   useEffect(() => {
     dispatch(getOneBusiness(id));
   }, [dispatch, id]);
+
+  useEffect(() => {
+    const avgRating = function (reviews) {
+      let total = 0;
+      reviews?.forEach((review) => (total += review.rating));
+      return total / reviews?.length;
+    };
+
+    setAvg(avgRating(business?.Reviews));
+  }, [business?.Reviews, avg]);
 
   const handleDelete = async (e) => {
     e.preventDefault();
@@ -27,13 +42,37 @@ const BusinessProfile = () => {
     history.push(`/businesses/${business.id}/edit`);
   };
 
+  let actions;
+  if (business?.userId === curr_user?.id) {
+    actions = (
+      <div className="oneBus-info-actions">
+        <button className="oneBus-edit-btn" onClick={handleEdit}>
+          Edit
+        </button>
+        <button className="oneBus-delete-btn" onClick={handleDelete}>
+          Delete
+        </button>
+      </div>
+    );
+  } else {
+    actions = <ReviewCreateModal />;
+  }
+
   return (
     <div className="oneBus-container">
       <div className="oneBus-img-container">
         <img className="oneBus-img" src={business?.img_link} alt="business" />
       </div>
       <div className="oneBus-info-container">
-        <h1 className="oneBus-info-header blue-font">{business?.name}</h1>
+        <div className="oneBus-info-header-container">
+          <h1 className="oneBus-info-header blue-font">
+            {business?.name}{" "}
+            <span className="oneBus-info-rating">
+              <FontAwesomeIcon className="yellow" icon={faStar} />
+              {avg ? avg.toFixed(2) : 0}
+            </span>
+          </h1>
+        </div>
         <div className="oneBus-info-content-container">
           <div className="oneBus-info-content">
             <h3 className="oneBus-info-content-header blue-font">Location</h3>
@@ -44,14 +83,7 @@ const BusinessProfile = () => {
               {business?.country}
             </p>
           </div>
-          <div className="oneBus-info-actions">
-            <button className="oneBus-edit-btn" onClick={handleEdit}>
-              Edit
-            </button>
-            <button className="oneBus-delete-btn" onClick={handleDelete}>
-              Delete
-            </button>
-          </div>
+          {business && actions}
         </div>
       </div>
       <div className="oneBus-review-container">
