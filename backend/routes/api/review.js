@@ -42,6 +42,7 @@ const validateNewReview = [
 router.post(
   "/",
   validateNewReview,
+  requireAuth,
   asyncHandler(async (req, res) => {
     const { userId, businessId, rating, review, img_link } = req.body;
     const newReview = await Review.create({
