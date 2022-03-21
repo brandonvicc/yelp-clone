@@ -1,15 +1,9 @@
 import { csrfFetch } from "./csrf";
 
 const ALL = "review/ALL";
-const ALL_FOR_ONE = "reviews/ALL_FOR_ONE";
 
 const allReviews = (reviews) => ({
   type: ALL,
-  reviews,
-});
-
-const allReviewsForOne = (reviews) => ({
-  type: ALL_FOR_ONE,
   reviews,
 });
 
@@ -21,10 +15,6 @@ export const getAll = () => async (dispatch) => {
     console.log(data);
     dispatch(allReviews(data));
   }
-};
-
-export const getAllForOne = (businessId) => async (dispatch) => {
-  const response = await csrfFetch("/api/");
 };
 
 const initialState = {};

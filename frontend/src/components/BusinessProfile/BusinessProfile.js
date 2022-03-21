@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { deleteOneBusiness, getOneBusiness } from "../../store/business";
 import "./BusinessProfile.css";
+import ReviewCard from "./ReviewCard/ReviewCard";
 
 const BusinessProfile = () => {
   const dispatch = useDispatch();
@@ -13,8 +14,6 @@ const BusinessProfile = () => {
   useEffect(() => {
     dispatch(getOneBusiness(id));
   }, [dispatch, id]);
-
-  console.log(business);
 
   const handleDelete = async (e) => {
     e.preventDefault();
@@ -54,6 +53,14 @@ const BusinessProfile = () => {
             </button>
           </div>
         </div>
+      </div>
+      <div className="oneBus-review-container">
+        <h3 className="oneBus-review-content-header blue-font">Reviews</h3>
+        <ul className="oneBus-review-list">
+          {business?.Reviews?.map((review) => (
+            <ReviewCard key={review.id} review={review} />
+          ))}
+        </ul>
       </div>
     </div>
   );
