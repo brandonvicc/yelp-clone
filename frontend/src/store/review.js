@@ -1,6 +1,12 @@
 import { csrfFetch } from "./csrf";
 
 const ALL = "review/ALL";
+const NEW = "review/NEW";
+
+const newReview = (review) => ({
+  type: NEW,
+  review,
+});
 
 const allReviews = (reviews) => ({
   type: ALL,
@@ -17,6 +23,19 @@ export const getAll = () => async (dispatch) => {
   }
 };
 
+export const create = (payload) => async (dispatch) => {
+  const response = await csrfFetch("/api/reviews/", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(newReview(data));
+  }
+  return response;
+};
+
 const initialState = {};
 const reducer = (state = initialState, action) => {
   let newState;
@@ -26,6 +45,9 @@ const reducer = (state = initialState, action) => {
       action.reviews.reviews.forEach(
         (review) => (newState[review.id] = { ...review })
       );
+      return newState;
+    case NEW:
+      newState = { ...action.review };
       return newState;
     default:
       return state;

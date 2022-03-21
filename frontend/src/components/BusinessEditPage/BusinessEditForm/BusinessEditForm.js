@@ -11,7 +11,7 @@ const BusinessEditForm = () => {
 
   useEffect(() => {
     dispatch(getOneBusiness(id));
-  }, [id]);
+  }, [dispatch, id]);
 
   const current_user = useSelector((state) => state.session.user);
   const businessState = useSelector((state) => state.business.business);
@@ -19,6 +19,7 @@ const BusinessEditForm = () => {
     localStorage.setItem("business", JSON.stringify(businessState));
   }
   const business = JSON.parse(localStorage.getItem("business"));
+
   const [name, setName] = useState(business.name);
   const [address, setAddress] = useState(business.address);
   const [city, setCity] = useState(business.city);
@@ -119,6 +120,7 @@ const BusinessEditForm = () => {
             onChange={(e) => setZipcode(e.target.value)}
             required
             className="signup-input"
+            inputMode="numeric"
           />
         </label>
         <label>

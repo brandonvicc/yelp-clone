@@ -10,10 +10,10 @@ const ReviewCard = ({ review }) => {
           {review.User.username}
         </h3>
         <p className="oneBus-review-content-rating">Rating: {review.rating}</p>
-        <p className="oneBus-review-content-created">
+        <div className="oneBus-review-content-created">
           Created At:
           <p> {new Date(review.createdAt).toDateString()}</p>
-        </p>
+        </div>
         <div className="oneBus-review-content-review">
           <p>{review.review}</p>
         </div>

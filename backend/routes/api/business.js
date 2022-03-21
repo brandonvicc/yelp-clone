@@ -49,25 +49,25 @@ const validateNewBusiness = [
     .exists({ checkFalsy: true })
     .isLength({ min: 4, max: 50 })
     .withMessage(
-      "Please provide an address name with at least 4 characters and a max of 50 characters."
+      "Please provide an address with at least 4 characters and a max of 50 characters."
     ),
   check("city")
     .exists({ checkFalsy: true })
     .isLength({ min: 4, max: 30 })
     .withMessage(
-      "Please provide a city name with at least 4 characters and a max of 30 characters."
+      "Please provide a city with at least 4 characters and a max of 30 characters."
     ),
   check("state")
     .exists({ checkFalsy: true })
     .isLength({ min: 2, max: 30 })
     .withMessage(
-      "Please provide a state name with at least 2 characters and a max of 30 characters."
+      "Please provide a state with at least 2 characters and a max of 30 characters."
     ),
   check("country")
     .exists({ checkFalsy: true })
-    .isLength({ min: 4, max: 30 })
+    .isLength({ min: 3, max: 30 })
     .withMessage(
-      "Please provide a country name with at least 4 characters and a max of 30 characters."
+      "Please provide a country with at least 4 characters and a max of 30 characters."
     ),
   check("zipcode")
     .exists({ checkFalsy: true })
@@ -83,8 +83,6 @@ router.post(
   "/",
   validateNewBusiness,
   asyncHandler(async (req, res) => {
-    console.log("\n\n\n in the route \n\n\n ");
-    console.log("req: ", req.body, "\n\n\n");
     const {
       name,
       userId,
@@ -113,8 +111,6 @@ router.post(
     });
 
     const business = await Business.findByPk(newBusiness.id);
-    console.log("\n\n\n Business Created \n\n\n");
-    console.log("\n\n\n", business, "\n\n\n\n");
     return res.json({ business });
   })
 );

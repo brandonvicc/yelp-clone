@@ -103,6 +103,7 @@ const NewBusinessForm = ({ current_user }) => {
             onChange={(e) => setZipcode(e.target.value)}
             required
             className="signup-input"
+            inputMode="numeric"
           />
         </label>
         <label>
