@@ -1,6 +1,7 @@
 import "./HomePage.css";
 import { useEffect } from "react";
 import * as businessActions from "../../store/business";
+import * as reviewActions from "../../store/review";
 import { useDispatch, useSelector } from "react-redux";
 import HomeHero from "./HomeHero";
 import Footer from "../Footer/Footer";
@@ -12,6 +13,7 @@ const HomePage = () => {
 
   useEffect(() => {
     dispatch(businessActions.getAll());
+    dispatch(reviewActions.getAll());
   }, [dispatch]);
 
   return (

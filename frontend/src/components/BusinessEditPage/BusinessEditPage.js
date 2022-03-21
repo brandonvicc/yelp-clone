@@ -6,11 +6,12 @@ import { getOneBusiness } from "../../store/business";
 const BusinessEditPage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
+
   useEffect(() => {
     dispatch(getOneBusiness(id));
-  }, [id]);
-  const current_user = useSelector((state) => state.session.user);
+  }, [dispatch, id]);
   const business = useSelector((state) => state.business.business);
+
   return (
     <div className="editBus-container">
       <h1>EDIT PAGE</h1>

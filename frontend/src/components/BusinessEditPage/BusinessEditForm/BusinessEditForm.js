@@ -15,22 +15,24 @@ const BusinessEditForm = () => {
 
   const current_user = useSelector((state) => state.session.user);
   const businessState = useSelector((state) => state.business.business);
-
   if (businessState !== undefined) {
     localStorage.setItem("business", JSON.stringify(businessState));
   }
   const business = JSON.parse(localStorage.getItem("business"));
-
-  const [name, setName] = useState(business?.name);
-  const [address, setAddress] = useState(business?.address);
-  const [city, setCity] = useState(business?.city);
-  const [state, setState] = useState(business?.state);
-  const [country, setCountry] = useState(business?.country);
-  const [zipcode, setZipcode] = useState(business?.zipcode);
-  const [lat, setLat] = useState(business?.lat);
-  const [lng, setLng] = useState(business?.lng);
-  const [img_link, setImgLink] = useState(business?.img_link);
+  const [name, setName] = useState(business.name);
+  const [address, setAddress] = useState(business.address);
+  const [city, setCity] = useState(business.city);
+  const [state, setState] = useState(business.state);
+  const [country, setCountry] = useState(business.country);
+  const [zipcode, setZipcode] = useState(business.zipcode);
+  const [lat, setLat] = useState(business.lat);
+  const [lng, setLng] = useState(business.lng);
+  const [img_link, setImgLink] = useState(business.img_link);
   const [errors, setErrors] = useState([]);
+
+  if (business.userId !== current_user?.id) {
+    history.push("/");
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();

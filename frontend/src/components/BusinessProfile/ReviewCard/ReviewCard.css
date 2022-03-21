@@ -1,0 +1,48 @@
+.oneBus-review-card {
+  margin: 20px auto 20px;
+  padding: 20px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 20px;
+  width: 800px;
+  /* border: 1px solid red; */
+  box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.3);
+}
+
+.oneBus-review-img-container {
+  width: 400px;
+  max-height: 400px;
+}
+
+.oneBus-review-img {
+  width: 100%;
+}
+
+.oneBus-review-content-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 1fr 150px;
+}
+
+.oneBus-review-content-username {
+  grid-column: 2/4;
+}
+
+.oneBus-review-content-rating {
+  grid-row: 2/3;
+  grid-column: 1/2;
+}
+.oneBus-review-content-created {
+  grid-row: 2/3;
+  grid-column: 3/4;
+  margin-bottom: 20px;
+}
+
+.oneBus-review-content-review {
+  grid-row: 3/ 4;
+  grid-column: 1/4;
+  background-color: rgb(216, 216, 216);
+  padding: 10px;
+  overflow-y: scroll;
+}
