@@ -17,7 +17,11 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Business.belongsTo(models.User, { foreignKey: "userId" });
-      Business.hasMany(models.Review, { foreignKey: "businessId" });
+      Business.hasMany(models.Review, {
+        foreignKey: "businessId",
+        onDelete: "cascade",
+        hooks: true,
+      });
     }
   }
   Business.init(

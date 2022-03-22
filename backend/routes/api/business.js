@@ -121,7 +121,7 @@ router.delete(
   asyncHandler(async (req, res) => {
     const business = await Business.findByPk(req.params.id);
     if (!business) throw new Error("No business with that id");
-    Business.destroy({ where: { id: business.id } });
+    await business.destroy();
 
     return res.json({ business });
   })
