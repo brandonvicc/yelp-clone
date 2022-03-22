@@ -7,6 +7,7 @@ import ReviewCard from "./ReviewCard/ReviewCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import ReviewCreateModal from "../ReviewCreateModal";
+import LoginFormModal from "../LoginFormModal";
 
 const BusinessProfile = () => {
   const dispatch = useDispatch();
@@ -55,7 +56,11 @@ const BusinessProfile = () => {
       </div>
     );
   } else {
-    actions = <ReviewCreateModal />;
+    if (curr_user !== null) {
+      actions = <ReviewCreateModal />;
+    } else {
+      actions = <LoginFormModal color={"-black"} />;
+    }
   }
 
   return (

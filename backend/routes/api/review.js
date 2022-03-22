@@ -57,4 +57,35 @@ router.post(
   })
 );
 
+router.delete(
+  "/:id",
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    const review = await Review.findByPk(req.params.id);
+    if (!review) throw new Error("No review with that id");
+    Review.destroy({ where: { id: review.id } });
+
+    return res.json({ review });
+  })
+);
+
+router.put(
+  "/:id",
+  requireAuth,
+  restoreUser,
+  asyncHandler(async (req, res) => {
+    const id = req.body.id;
+    delete req.body.id;
+    await Review.update(req.body, {
+      where: { id },
+      returning: true,
+      plain: true,
+    });
+
+    const review = await Review.findByPk(id);
+
+    return res.json(review);
+  })
+);
+
 module.exports = router;
