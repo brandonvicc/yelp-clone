@@ -72,10 +72,12 @@ const validateNewBusiness = [
   check("zipcode")
     .exists({ checkFalsy: true })
     .isLength({ min: 5, max: 5 })
-    .withMessage("Please provide a zipcode with 5 characters."),
+    .matches(/^\d{5}$/)
+    .withMessage("Please provide a zipcode with 5 numbers."),
   check("img_link")
     .exists({ checkFalsy: true })
-    .withMessage("Please provide an image."),
+    .matches(/\.(jpeg|jpg|gif|png)$/)
+    .withMessage("Please provide an image with either extensions: .jpeg .jpg .gif .png"),
   handleValidationErrors,
 ];
 
