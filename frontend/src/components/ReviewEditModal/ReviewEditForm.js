@@ -3,24 +3,23 @@ import * as reviewActions from "../../store/review";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 
-import "./ReviewCreateForm.css";
-
-function ReviewCreateForm() {
+function ReviewEditForm({ reviewToEdit }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const curr_user = useSelector((state) => state.session.user);
   const { id } = useParams();
-  const [review, setReview] = useState("");
-  const [rating, setRating] = useState(0);
-  const [img_link, setImgLink] = useState("");
+  const [review, setReview] = useState(reviewToEdit.review);
+  const [rating, setRating] = useState(reviewToEdit.rating);
+  const [img_link, setImgLink] = useState(reviewToEdit.img_link);
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
     return dispatch(
-      reviewActions.create({
-        userId: curr_user.id,
+      reviewActions.updateReview({
+        id: reviewToEdit.id,
+        userId: curr_user?.id,
         businessId: id,
         review,
         rating,
@@ -98,11 +97,11 @@ function ReviewCreateForm() {
         </label>
 
         <button className="review-create-btn blue-btn" type="submit">
-          Add Review
+          Edit Review
         </button>
       </form>
     </div>
   );
 }
 
-export default ReviewCreateForm;
+export default ReviewEditForm;
