@@ -26,7 +26,9 @@ const validateNewReview = [
   check("img_link")
     .exists({ checkFalsy: true })
     .matches(/\.(jpeg|jpg|gif|png)$/)
-    .withMessage("Please provide an image with either extensions: .jpeg .jpg .gif .png"),
+    .withMessage(
+      "Please provide an image with either extensions: .jpeg .jpg .gif .png"
+    ),
   check("review")
     .exists({ checkFalsy: true })
     .isLength({ min: 5, max: 255 })
@@ -72,6 +74,7 @@ router.delete(
 
 router.put(
   "/:id",
+  validateNewReview,
   requireAuth,
   restoreUser,
   asyncHandler(async (req, res) => {
