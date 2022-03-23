@@ -57,7 +57,7 @@ const BusinessProfile = () => {
       </div>
     );
   } else {
-    if (curr_user !== null) {
+    if (curr_user) {
       actions = <ReviewCreateModal />;
     } else {
       actions = <LoginFormModal color={"-black"} />;

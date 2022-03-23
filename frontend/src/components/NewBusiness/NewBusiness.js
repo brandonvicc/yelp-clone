@@ -8,8 +8,6 @@ const NewBusiness = () => {
   const current_user = useSelector((state) => state.session.user);
   const history = useHistory();
 
-  console.log(current_user);
-
   if (!current_user) {
     history.push("/signup");
   }

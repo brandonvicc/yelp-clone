@@ -30,7 +30,6 @@ export const getAll = () => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-    console.log(data);
     dispatch(allReviews(data));
   }
 };
