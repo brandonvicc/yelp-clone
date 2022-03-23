@@ -122,7 +122,9 @@ const NewBusinessForm = ({ current_user }) => {
           />
         </label>
         <label className="newBus-form-label">
-          <p>Latitude</p>
+          <p>
+            Latitude <span className="optional">(optional)</span>
+          </p>
           <input
             type="number"
             value={lat}
@@ -131,7 +133,9 @@ const NewBusinessForm = ({ current_user }) => {
           />
         </label>
         <label className="newBus-form-label">
-          <p>Longitude</p>
+          <p>
+            Longitude <span className="optional">(optional)</span>
+          </p>
           <input
             type="number"
             value={lng}

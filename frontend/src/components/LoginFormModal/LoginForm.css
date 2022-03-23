@@ -1,5 +1,5 @@
 .login-btn {
-  border: 1px solid white;
+  border: 1px solid var(--blue);
   background-color: transparent;
   color: white;
   padding: 10px;
@@ -7,6 +7,7 @@
   border-radius: 5px;
   width: 100px;
   font-size: 15px;
+  margin-bottom: 10px;
 }
 
 .login-btn:hover {
@@ -18,7 +19,7 @@
 }
 
 .login-modal-container {
-  height: 325px;
+  height: 375px;
   width: 300px;
   padding: 25px;
 }

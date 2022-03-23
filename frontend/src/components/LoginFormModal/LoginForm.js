@@ -19,6 +19,16 @@ function LoginForm() {
       }
     );
   };
+  const handleDemo = (e) => {
+    e.preventDefault();
+    setErrors([]);
+    return dispatch(
+      sessionActions.login({ credential: "demo@user.io", password: "password" })
+    ).catch(async (res) => {
+      const data = await res.json();
+      if (data && data.errors) setErrors(data.errors);
+    });
+  };
 
   return (
     <div className="login-modal-container">
@@ -55,6 +65,9 @@ function LoginForm() {
           Log In
         </button>
       </form>
+      <button className="login-btn blue" onClick={handleDemo}>
+        Demo
+      </button>
     </div>
   );
 }

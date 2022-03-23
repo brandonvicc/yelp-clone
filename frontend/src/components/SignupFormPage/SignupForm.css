@@ -29,8 +29,9 @@
   padding: 10px;
   cursor: pointer;
   border-radius: 5px;
-  width: 100px;
+  width: 250px;
   font-size: 15px;
+  margin-bottom: 15px;
 }
 
 .signup-btn:hover {
