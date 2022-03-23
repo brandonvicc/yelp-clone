@@ -43,3 +43,11 @@ textarea:focus {
 .yellow {
   color: rgb(251, 255, 1);
 }
+
+.error-list {
+  list-style: none;
+}
+
+.error-list-item {
+  color: red;
+}

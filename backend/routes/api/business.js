@@ -77,7 +77,9 @@ const validateNewBusiness = [
   check("img_link")
     .exists({ checkFalsy: true })
     .matches(/\.(jpeg|jpg|gif|png)$/)
-    .withMessage("Please provide an image with either extensions: .jpeg .jpg .gif .png"),
+    .withMessage(
+      "Please provide an image with either extensions: .jpeg .jpg .gif .png"
+    ),
   handleValidationErrors,
 ];
 
@@ -131,6 +133,7 @@ router.delete(
 
 router.put(
   "/:id",
+  validateNewBusiness,
   requireAuth,
   restoreUser,
   asyncHandler(async (req, res) => {

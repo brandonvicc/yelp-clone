@@ -70,9 +70,11 @@ const BusinessEditForm = () => {
       <h1 className="editBus-header blue-font">Edit your Business</h1>
 
       <form onSubmit={handleSubmit} className="editBus-form">
-        <ul>
+        <ul className="error-list">
           {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
+            <li className="error-list-item" key={idx}>
+              {error}
+            </li>
           ))}
         </ul>
         <label className="editBus-form-label">

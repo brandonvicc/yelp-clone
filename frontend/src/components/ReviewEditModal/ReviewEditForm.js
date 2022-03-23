@@ -39,9 +39,11 @@ function ReviewEditForm({ reviewToEdit }) {
   return (
     <div className="review-create-modal-container">
       <h1 className="blue-font review-create-header">Leave a Review</h1>
-      <ul>
+      <ul className="error-list">
         {errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
+          <li className="error-list-item" key={idx}>
+            {error}
+          </li>
         ))}
       </ul>
       <form className="review-create-form" onSubmit={handleSubmit}>
