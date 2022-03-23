@@ -34,6 +34,22 @@
   font-size: 9em;
 }
 
+.home-header-promote,
+.home-header-review {
+  color: white;
+  position: absolute;
+  left: 23%;
+  font-size: 2em;
+}
+
+.home-header-promote {
+  top: 50%;
+}
+
+.home-header-review {
+  top: 58%;
+}
+
 /* Business Section */
 .home-business-container {
   width: 75%;
@@ -68,7 +84,7 @@
   box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.3);
 }
 
-.home-business-card-link{
+.home-business-card-link {
   text-decoration: none;
   color: black;
 }
@@ -82,7 +98,7 @@
   padding: 10px;
 }
 
-.home-business-card-actions{
+.home-business-card-actions {
   display: flex;
   align-items: center;
   justify-content: center;

@@ -21,6 +21,7 @@ const ReviewCard = ({ review }) => {
     e.preventDefault();
     await dispatch(reviewActions.deleteOneReview(review.id));
     await dispatch(reviewActions.getReviewsForBusiness(id));
+    toggleOptions();
   };
 
   let reviewOptions;

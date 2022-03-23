@@ -5,6 +5,10 @@ const HomeHero = () => {
       <div className="home-hero-img-container">
         <div className="hero-cover">
           <h1 className="home-header">Yalp!</h1>
+          <h3 className="home-header-promote blue-font">
+            Promote Your Business!
+          </h3>
+          <h3 className="home-header-review blue-font">Review Businesses!</h3>
         </div>
         <img
           className="home-hero-img"
