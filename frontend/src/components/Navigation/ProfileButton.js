@@ -35,10 +35,11 @@ function ProfileButton({ user, color }) {
       </button>
       {showMenu && (
         <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
+          <li>Welcome, {user.username}</li>
           <li>
-            <button onClick={logout}>Log Out</button>
+            <button onClick={logout} className="nav-user-profile-logout">
+              Log Out
+            </button>
           </li>
         </ul>
       )}

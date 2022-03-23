@@ -25,7 +25,8 @@ const validateNewReview = [
     .withMessage("Business does not exist"),
   check("img_link")
     .exists({ checkFalsy: true })
-    .withMessage("Please provide an image."),
+    .matches(/\.(jpeg|jpg|gif|png)$/)
+    .withMessage("Please provide an image with either extensions: .jpeg .jpg .gif .png"),
   check("review")
     .exists({ checkFalsy: true })
     .isLength({ min: 5, max: 255 })

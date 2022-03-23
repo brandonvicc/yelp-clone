@@ -1,0 +1,25 @@
+.newBus-form-container {
+  flex: 2;
+}
+
+.newBus-submit-btn {
+  color: var(--blue);
+  border: 2px solid var(--blue);
+  background-color: white;
+  padding: 15px;
+  width: 200px;
+  font-size: 1.1em;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.newBus-submit-btn:hover {
+  color: white;
+  background-color: var(--blue);
+  transition: ease-out;
+  transition-duration: 0.3s;
+}
+
+.newBus-form-label p {
+  margin-top: 15px;
+}

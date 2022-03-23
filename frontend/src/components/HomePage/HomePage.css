@@ -43,14 +43,15 @@
 .home-business-header {
   text-align: center;
   margin-bottom: 40px;
+  text-decoration: none;
 }
 
 .home-business-list {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
-  gap: 100px;
+  gap: 50px;
   list-style: none;
 }
 
@@ -67,13 +68,26 @@
   box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.3);
 }
 
+.home-business-card-link{
+  text-decoration: none;
+  color: black;
+}
+
 .home-business-card-title {
   text-align: center;
-  padding: 10px;
+  padding: 20px;
 }
 
 .home-business-card-content {
   padding: 10px;
+}
+
+.home-business-card-actions{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  height: 50px;
 }
 
 .home-delete-btn {
@@ -82,6 +96,7 @@
   background-color: white;
   padding: 5px;
   cursor: pointer;
+  width: 70px;
 }
 
 .home-delete-btn:hover {
@@ -96,6 +111,7 @@
   background-color: white;
   padding: 5px;
   cursor: pointer;
+  width: 70px;
 }
 
 .home-edit-btn:hover {
