@@ -96,7 +96,7 @@ const reducer = (state = initialState, action) => {
       );
       return newState;
     case NEW:
-      newState = { ...action.review };
+      newState = { [action.review.id]: { ...action.review }, ...state };
       return newState;
     case DELETE:
       newState = { ...state };

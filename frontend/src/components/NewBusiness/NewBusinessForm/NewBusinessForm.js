@@ -40,7 +40,6 @@ const NewBusinessForm = ({ current_user }) => {
       })
     )
       .then((data) => {
-        console.log(data);
         history.push("/");
       })
       .catch(async (res) => {
