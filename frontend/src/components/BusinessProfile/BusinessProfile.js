@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import ReviewCreateModal from "../ReviewCreateModal";
 import LoginFormModal from "../LoginFormModal";
+import Footer from "../Footer/Footer";
 
 const BusinessProfile = () => {
   const dispatch = useDispatch();
@@ -74,7 +75,7 @@ const BusinessProfile = () => {
             {business?.name}{" "}
             <span className="oneBus-info-rating">
               <FontAwesomeIcon className="yellow" icon={faStar} />
-              {avg ? avg.toFixed(2) : 0}
+              {avg ? avg.toFixed(2) : 0} ({business?.Reviews.length})
             </span>
           </h1>
         </div>
@@ -99,6 +100,7 @@ const BusinessProfile = () => {
           ))}
         </ul>
       </div>
+      <Footer />
     </div>
   );
 };

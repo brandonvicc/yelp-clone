@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { newBusiness } from "../../../store/business";
+import "./NewBusinessForm.css";
 
 const NewBusinessForm = ({ current_user }) => {
   const [name, setName] = useState("");
@@ -49,13 +50,15 @@ const NewBusinessForm = ({ current_user }) => {
   };
   return (
     <div className="newBus-form-container">
+      <h1 className="newBus-header blue-font">Promote your Business</h1>
+
       <form onSubmit={handleSubmit} className="newBus-form">
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <label>
+        <label className="newBus-form-label">
           <p>Name of Business</p>
           <input
             type="text"
@@ -65,7 +68,7 @@ const NewBusinessForm = ({ current_user }) => {
             className="signup-input"
           />
         </label>
-        <label>
+        <label className="newBus-form-label">
           <p>Address</p>
           <input
             type="text"
@@ -75,7 +78,7 @@ const NewBusinessForm = ({ current_user }) => {
             className="signup-input"
           />
         </label>
-        <label>
+        <label className="newBus-form-label">
           <p>City</p>
           <input
             type="text"
@@ -85,7 +88,7 @@ const NewBusinessForm = ({ current_user }) => {
             className="signup-input"
           />
         </label>
-        <label>
+        <label className="newBus-form-label">
           <p>State</p>
           <input
             type="text"
@@ -95,7 +98,7 @@ const NewBusinessForm = ({ current_user }) => {
             className="signup-input"
           />
         </label>
-        <label>
+        <label className="newBus-form-label">
           <p>Zipcode</p>
           <input
             type="text"
@@ -106,7 +109,7 @@ const NewBusinessForm = ({ current_user }) => {
             inputMode="numeric"
           />
         </label>
-        <label>
+        <label className="newBus-form-label">
           <p>Country</p>
           <input
             type="text"
@@ -116,7 +119,7 @@ const NewBusinessForm = ({ current_user }) => {
             className="signup-input"
           />
         </label>
-        <label>
+        <label className="newBus-form-label">
           <p>Latitude</p>
           <input
             type="number"
@@ -125,7 +128,7 @@ const NewBusinessForm = ({ current_user }) => {
             className="signup-input"
           />
         </label>
-        <label>
+        <label className="newBus-form-label">
           <p>Longitude</p>
           <input
             type="number"
@@ -134,7 +137,7 @@ const NewBusinessForm = ({ current_user }) => {
             className="signup-input"
           />
         </label>
-        <label>
+        <label className="newBus-form-label">
           <p>Image</p>
           <input
             type="text"
@@ -144,7 +147,13 @@ const NewBusinessForm = ({ current_user }) => {
             className="signup-input"
           />
         </label>
-        <input type="submit" value="Add your Business" />
+        <div className="newBus-btn-container">
+          <input
+            className="newBus-submit-btn"
+            type="submit"
+            value="Add your Business"
+          />
+        </div>
       </form>
     </div>
   );

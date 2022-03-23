@@ -1,0 +1,23 @@
+.editBus-container {
+  width: 80%;
+  margin: 30px auto;
+}
+
+.editBus-content-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+}
+
+.editBus-header {
+  margin: 40px auto;
+}
+
+.editBus-img-container {
+  flex-basis: 50%;
+}
+
+.editBus-img {
+  width: 100%;
+}

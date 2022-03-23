@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { updateBusiness, getOneBusiness } from "../../../store/business";
+import "./BusinessEditForm.css";
 
 const BusinessEditForm = () => {
   const history = useHistory();
@@ -66,13 +67,15 @@ const BusinessEditForm = () => {
 
   return (
     <div className="editBus-form-container">
+      <h1 className="editBus-header blue-font">Edit your Business</h1>
+
       <form onSubmit={handleSubmit} className="editBus-form">
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <label>
+        <label className="editBus-form-label">
           <p>Name of Business</p>
           <input
             type="text"
@@ -82,7 +85,7 @@ const BusinessEditForm = () => {
             className="signup-input"
           />
         </label>
-        <label>
+        <label className="editBus-form-label">
           <p>Address</p>
           <input
             type="text"
@@ -92,7 +95,7 @@ const BusinessEditForm = () => {
             className="signup-input"
           />
         </label>
-        <label>
+        <label className="editBus-form-label">
           <p>City</p>
           <input
             type="text"
@@ -102,7 +105,7 @@ const BusinessEditForm = () => {
             className="signup-input"
           />
         </label>
-        <label>
+        <label className="editBus-form-label">
           <p>State</p>
           <input
             type="text"
@@ -112,7 +115,7 @@ const BusinessEditForm = () => {
             className="signup-input"
           />
         </label>
-        <label>
+        <label className="editBus-form-label">
           <p>Zipcode</p>
           <input
             type="text"
@@ -123,7 +126,7 @@ const BusinessEditForm = () => {
             inputMode="numeric"
           />
         </label>
-        <label>
+        <label className="editBus-form-label">
           <p>Country</p>
           <input
             type="text"
@@ -133,7 +136,7 @@ const BusinessEditForm = () => {
             className="signup-input"
           />
         </label>
-        <label>
+        <label className="editBus-form-label">
           <p>Latitude</p>
           <input
             type="number"
@@ -142,7 +145,7 @@ const BusinessEditForm = () => {
             className="signup-input"
           />
         </label>
-        <label>
+        <label className="editBus-form-label">
           <p>Longitude</p>
           <input
             type="number"
@@ -151,7 +154,7 @@ const BusinessEditForm = () => {
             className="signup-input"
           />
         </label>
-        <label>
+        <label className="editBus-form-label">
           <p>Image</p>
           <input
             type="text"
@@ -161,7 +164,13 @@ const BusinessEditForm = () => {
             className="signup-input"
           />
         </label>
-        <input type="submit" value="Edit your Business" />
+        <div className="editBus-btn-container">
+          <input
+            type="submit"
+            value="Edit your Business"
+            className="editBus-submit-btn"
+          />
+        </div>
       </form>
     </div>
   );
