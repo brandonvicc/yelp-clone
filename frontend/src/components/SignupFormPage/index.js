@@ -32,6 +32,17 @@ function SignupFormPage() {
     ]);
   };
 
+  const handleDemo = (e) => {
+    e.preventDefault();
+    setErrors([]);
+    return dispatch(
+      sessionActions.login({ credential: "demo@user.io", password: "password" })
+    ).catch(async (res) => {
+      const data = await res.json();
+      if (data && data.errors) setErrors(data.errors);
+    });
+  };
+
   return (
     <>
       <div className="signup-container">
@@ -98,6 +109,9 @@ function SignupFormPage() {
               Sign Up
             </button>
           </form>
+          <button className="login-btn blue" onClick={handleDemo}>
+            Demo
+          </button>
         </div>
         <div className="img-section-container">
           <div className="signup-img-container">

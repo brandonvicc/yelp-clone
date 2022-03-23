@@ -51,3 +51,7 @@ textarea:focus {
 .error-list-item {
   color: red;
 }
+
+.optional {
+  font-size: 0.7em;
+}
