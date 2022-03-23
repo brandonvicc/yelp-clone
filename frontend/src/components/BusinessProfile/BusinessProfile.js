@@ -32,8 +32,8 @@ const BusinessProfile = () => {
       return total / reviews?.length;
     };
 
-    setAvg(avgRating(business?.Reviews));
-  }, [business?.Reviews, avg]);
+    setAvg(avgRating(reviews));
+  }, [reviews, avg]);
 
   const handleDelete = async (e) => {
     e.preventDefault();
@@ -78,7 +78,7 @@ const BusinessProfile = () => {
             {business?.name}{" "}
             <span className="oneBus-info-rating">
               <FontAwesomeIcon className="yellow" icon={faStar} />
-              {avg ? avg.toFixed(2) : 0} ({business?.Reviews.length})
+              {avg ? avg.toFixed(2) : 0} ({reviews?.length})
             </span>
           </h1>
         </div>

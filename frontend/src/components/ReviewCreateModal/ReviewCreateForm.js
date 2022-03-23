@@ -5,13 +5,13 @@ import { useParams, useHistory } from "react-router-dom";
 
 import "./ReviewCreateForm.css";
 
-function ReviewCreateForm() {
+function ReviewCreateForm({ toggleModal }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const curr_user = useSelector((state) => state.session.user);
   const { id } = useParams();
   const [review, setReview] = useState("");
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(1);
   const [img_link, setImgLink] = useState("");
   const [errors, setErrors] = useState([]);
 
@@ -27,9 +27,10 @@ function ReviewCreateForm() {
         img_link,
       })
     )
-      .then((data) => {
+      .then(async (data) => {
+        await dispatch(reviewActions.getReviewsForBusiness(id));
+        toggleModal();
         history.push(`/businesses/${id}`);
-        window.location.reload(true);
       })
       .catch(async (res) => {
         const data = await res.json();
@@ -56,9 +57,6 @@ function ReviewCreateForm() {
             required
             className="review-create-select"
           >
-            <option className="review-create-option" value={0}>
-              0
-            </option>
             <option className="review-create-option" value={1}>
               1
             </option>

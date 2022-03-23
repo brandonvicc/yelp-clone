@@ -5,6 +5,10 @@ import ReviewCreateForm from "./ReviewCreateForm";
 function ReviewCreateModal() {
   const [showModal, setShowModal] = useState(false);
 
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  };
+
   return (
     <>
       <div className="oneBus-info-actions">
@@ -14,7 +18,7 @@ function ReviewCreateModal() {
       </div>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <ReviewCreateForm />
+          <ReviewCreateForm toggleModal={toggleModal} />
         </Modal>
       )}
     </>
