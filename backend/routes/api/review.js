@@ -37,7 +37,7 @@ const validateNewReview = [
     ),
   check("rating")
     .exists({ checkFalsy: true })
-    .if((value, { req }) => req.body.rating > 0 || req.body.rating <= 5)
+    .if((value, { req }) => req.body.rating >= 0 || req.body.rating <= 5)
     .withMessage("Please provide a rating between 0 and 5."),
   handleValidationErrors,
 ];
