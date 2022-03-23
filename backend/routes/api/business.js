@@ -35,6 +35,17 @@ router.get(
   })
 );
 
+router.get(
+  "/:id/reviews",
+  asyncHandler(async (req, res) => {
+    const reviews = await Review.findAll({
+      where: { businessId: req.params.id },
+      include: [User],
+    });
+    return res.json({ reviews });
+  })
+);
+
 const validateNewBusiness = [
   check("name")
     .exists({ checkFalsy: true })

@@ -9,17 +9,20 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import ReviewCreateModal from "../ReviewCreateModal";
 import LoginFormModal from "../LoginFormModal";
 import Footer from "../Footer/Footer";
+import * as reviewActions from "../../store/review";
 
 const BusinessProfile = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const business = useSelector((state) => state.business.business);
   const curr_user = useSelector((state) => state.session.user);
+  const reviews = useSelector((state) => Object.values(state.review));
   const { id } = useParams();
   const [avg, setAvg] = useState();
 
   useEffect(() => {
     dispatch(getOneBusiness(id));
+    dispatch(reviewActions.getReviewsForBusiness(id));
   }, [dispatch, id]);
 
   useEffect(() => {
@@ -95,8 +98,8 @@ const BusinessProfile = () => {
       <div className="oneBus-review-container">
         <h3 className="oneBus-review-content-header blue-font">Reviews</h3>
         <ul className="oneBus-review-list">
-          {business?.Reviews?.map((review) => (
-            <ReviewCard key={review.id} review={review} />
+          {reviews?.map((review, idx) => (
+            <ReviewCard key={idx} review={review} />
           ))}
         </ul>
       </div>
