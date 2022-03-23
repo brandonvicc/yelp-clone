@@ -4,6 +4,7 @@ const ALL = "review/ALL";
 const NEW = "review/NEW";
 const DELETE = "review/DELETE";
 const UPDATE = "review/UPDATE";
+const ONEBUS_REVIEWS = "review/ONEBUS_REVIEWS";
 
 const newReview = (review) => ({
   type: NEW,
@@ -23,6 +24,11 @@ const oneDeleted = (review) => ({
 const reviewUpdated = (review) => ({
   type: UPDATE,
   review,
+});
+
+const reviewsForBusiness = (reviews) => ({
+  type: ONEBUS_REVIEWS,
+  reviews,
 });
 
 export const getAll = () => async (dispatch) => {
@@ -53,13 +59,12 @@ export const deleteOneReview = (id) => async (dispatch) => {
   });
 
   if (response.ok) {
-    // const data = await response.json();
-    dispatch(oneDeleted());
+    const data = await response.json();
+    dispatch(oneDeleted(data));
   }
 };
 
 export const updateReview = (review) => async (dispatch) => {
-  console.log(review);
   const response = await csrfFetch(`/api/reviews/${review.id}`, {
     method: "PUT",
     body: JSON.stringify(review),
@@ -68,6 +73,15 @@ export const updateReview = (review) => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     dispatch(reviewUpdated(data.review));
+  }
+};
+
+export const getReviewsForBusiness = (id) => async (dispatch) => {
+  const response = await csrfFetch(`/api/businesses/${id}/reviews`);
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(reviewsForBusiness(data));
   }
 };
 
@@ -85,10 +99,20 @@ const reducer = (state = initialState, action) => {
       newState = { ...action.review };
       return newState;
     case DELETE:
-      newState = {};
+      newState = { ...state };
+      delete newState[action.review.id];
       return newState;
     case UPDATE:
-      newState = { ...action.business };
+      newState = {
+        ...state,
+        [action.review.id]: { ...action.review },
+      };
+      return newState;
+    case ONEBUS_REVIEWS:
+      newState = {};
+      action.reviews.reviews.forEach(
+        (review) => (newState[review.id] = { ...review })
+      );
       return newState;
     default:
       return state;

@@ -3,7 +3,7 @@ import * as reviewActions from "../../store/review";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 
-function ReviewEditForm({ reviewToEdit }) {
+function ReviewEditForm({ reviewToEdit, closeModal, toggleOptions }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const curr_user = useSelector((state) => state.session.user);
@@ -26,9 +26,11 @@ function ReviewEditForm({ reviewToEdit }) {
         img_link,
       })
     )
-      .then((data) => {
+      .then(async (data) => {
+        await dispatch(reviewActions.getReviewsForBusiness(id));
+        closeModal();
+        toggleOptions();
         history.push(`/businesses/${id}`);
-        window.location.reload(true);
       })
       .catch(async (res) => {
         const data = await res.json();

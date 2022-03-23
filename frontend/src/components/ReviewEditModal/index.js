@@ -3,8 +3,12 @@ import { Modal } from "../../context/Modal";
 import ReviewEditForm from "./ReviewEditForm";
 import "./ReviewEditModal.css";
 
-function ReviewEditModal({ review }) {
+function ReviewEditModal({ review, toggleOptions }) {
   const [showModal, setShowModal] = useState(false);
+
+  const closeModal = () => {
+    setShowModal(!showModal);
+  };
 
   return (
     <>
@@ -16,7 +20,11 @@ function ReviewEditModal({ review }) {
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <ReviewEditForm reviewToEdit={review} />
+          <ReviewEditForm
+            reviewToEdit={review}
+            closeModal={closeModal}
+            toggleOptions={toggleOptions}
+          />
         </Modal>
       )}
     </>
