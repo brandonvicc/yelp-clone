@@ -59,7 +59,7 @@ function App() {
           </Route>
           <Route>
             <Navigation isLoaded={isLoaded} color={"-black"} />
-            404 not found
+            <h1 className="not-found">404 not found</h1>
             <Footer />
           </Route>
         </Switch>

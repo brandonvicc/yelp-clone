@@ -8,6 +8,13 @@
   border-radius: 5px;
 }
 
+.logo {
+  text-decoration: none;
+  padding: 5px;
+  color: var(--blue);
+  font-size: 1.2em;
+}
+
 .nav-user-profile-logout {
   color: var(--blue);
   border: 2px solid var(--blue);
