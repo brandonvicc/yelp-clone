@@ -36,8 +36,8 @@ function Navigation({ isLoaded, color }) {
     <div className="nav-bar-container">
       <ul className="nav-list">
         <li className="nav-link-item">
-          <NavLink className={`nav-link${color}`} to={"/"}>
-            Home
+          <NavLink className={"logo"} to={"/"}>
+            <h2 className="logo-font">Yalp!</h2>
           </NavLink>
         </li>
         <li className="nav-link-item">

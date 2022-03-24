@@ -55,3 +55,12 @@ textarea:focus {
 .optional {
   font-size: 0.7em;
 }
+
+.logo-font {
+  font-family: "Lobster", cursive;
+}
+
+.not-found {
+  text-align: center;
+  margin: 250px auto;
+}

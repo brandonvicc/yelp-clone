@@ -72,7 +72,7 @@ const BusinessProfile = () => {
   }
   let display;
   if (business === undefined) {
-    display = <h1>Business Not Found</h1>;
+    display = <h1 className="not-found">Business Not Found</h1>;
     console.log(display);
   } else {
     display = (
@@ -111,11 +111,15 @@ const BusinessProfile = () => {
             ))}
           </ul>
         </div>
-        <Footer />
       </>
     );
   }
-  return <div className="oneBus-container">{display}</div>;
+  return (
+    <div className="oneBus-container">
+      {display}
+      <Footer />
+    </div>
+  );
 };
 
 export default BusinessProfile;
