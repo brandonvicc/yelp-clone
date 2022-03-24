@@ -26,6 +26,7 @@ const BusinessProfile = () => {
     if (!checkId) return history.push("/the404");
     dispatch(getOneBusiness(id));
     dispatch(reviewActions.getReviewsForBusiness(id));
+    console.log(business);
   }, [dispatch, id, history]);
 
   useEffect(() => {
@@ -69,47 +70,52 @@ const BusinessProfile = () => {
       actions = <LoginFormModal color={"-black"} />;
     }
   }
-
-  // if (!business) return <Redirect to={"/the404"} />;
-  return (
-    <div className="oneBus-container">
-      <div className="oneBus-img-container">
-        <img className="oneBus-img" src={business?.img_link} alt="business" />
-      </div>
-      <div className="oneBus-info-container">
-        <div className="oneBus-info-header-container">
-          <h1 className="oneBus-info-header blue-font">
-            {business?.name}{" "}
-            <span className="oneBus-info-rating">
-              <FontAwesomeIcon className="yellow" icon={faStar} />
-              {avg ? avg.toFixed(2) : 0} ({reviews?.length})
-            </span>
-          </h1>
+  let display;
+  if (business === undefined) {
+    display = <h1>Business Not Found</h1>;
+    console.log(display);
+  } else {
+    display = (
+      <>
+        <div className="oneBus-img-container">
+          <img className="oneBus-img" src={business?.img_link} alt="business" />
         </div>
-        <div className="oneBus-info-content-container">
-          <div className="oneBus-info-content">
-            <h3 className="oneBus-info-content-header blue-font">Location</h3>
-            <h5>Address</h5>
-            <p className="oneBus-info">{business?.address}</p>
-            <p className="oneBus-info">
-              {business?.city}, {business?.state} {business?.zipcode}{" "}
-              {business?.country}
-            </p>
+        <div className="oneBus-info-container">
+          <div className="oneBus-info-header-container">
+            <h1 className="oneBus-info-header blue-font">
+              {business?.name}{" "}
+              <span className="oneBus-info-rating">
+                <FontAwesomeIcon className="yellow" icon={faStar} />
+                {avg ? avg.toFixed(2) : 0} ({reviews?.length})
+              </span>
+            </h1>
           </div>
-          {business && actions}
+          <div className="oneBus-info-content-container">
+            <div className="oneBus-info-content">
+              <h3 className="oneBus-info-content-header blue-font">Location</h3>
+              <h5>Address</h5>
+              <p className="oneBus-info">{business?.address}</p>
+              <p className="oneBus-info">
+                {business?.city}, {business?.state} {business?.zipcode}{" "}
+                {business?.country}
+              </p>
+            </div>
+            {business && actions}
+          </div>
         </div>
-      </div>
-      <div className="oneBus-review-container">
-        <h3 className="oneBus-review-content-header blue-font">Reviews</h3>
-        <ul className="oneBus-review-list">
-          {reviews?.map((review, idx) => (
-            <ReviewCard key={idx} review={review} />
-          ))}
-        </ul>
-      </div>
-      <Footer />
-    </div>
-  );
+        <div className="oneBus-review-container">
+          <h3 className="oneBus-review-content-header blue-font">Reviews</h3>
+          <ul className="oneBus-review-list">
+            {reviews?.map((review, idx) => (
+              <ReviewCard key={idx} review={review} />
+            ))}
+          </ul>
+        </div>
+        <Footer />
+      </>
+    );
+  }
+  return <div className="oneBus-container">{display}</div>;
 };
 
 export default BusinessProfile;
