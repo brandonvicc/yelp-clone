@@ -1,5 +1,5 @@
 .login-btn {
-  border: 1px solid var(--blue);
+  border: 1px solid white;
   background-color: transparent;
   color: white;
   padding: 10px;
@@ -13,7 +13,7 @@
 .login-btn:hover {
   border: 2px solid white;
   background-color: white;
-  color: white;
+  color: black;
   transition: ease-out;
   transition-duration: 0.3s;
 }
