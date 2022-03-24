@@ -18,7 +18,8 @@
 }
 
 .review-create-modal-container {
-  height: 500px;
+  min-height: 425px;
+  height: fit-content;
   width: 500px;
   padding: 25px;
 }
