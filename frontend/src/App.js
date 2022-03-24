@@ -10,6 +10,7 @@ import HomePage from "./components/HomePage/HomePage";
 import NewBusiness from "./components/NewBusiness/NewBusiness";
 import BusinessEditPage from "./components/BusinessEditPage/BusinessEditPage";
 import BusinessProfile from "./components/BusinessProfile/BusinessProfile";
+import Footer from "./components/Footer/Footer";
 // import { Modal } from "./context/Modal";
 function App() {
   const dispatch = useDispatch();
@@ -56,7 +57,11 @@ function App() {
           <Route exact path="/">
             <Redirect to={"/businesses"} />
           </Route>
-          <Route>404 not found</Route>
+          <Route>
+            <Navigation isLoaded={isLoaded} color={"-black"} />
+            404 not found
+            <Footer />
+          </Route>
         </Switch>
       )}
       {/* <Footer /> */}
