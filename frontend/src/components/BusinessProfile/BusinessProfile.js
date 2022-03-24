@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Redirect } from "react-router-dom";
 import { deleteOneBusiness, getOneBusiness } from "../../store/business";
 import "./BusinessProfile.css";
 import ReviewCard from "./ReviewCard/ReviewCard";
@@ -21,9 +21,12 @@ const BusinessProfile = () => {
   const [avg, setAvg] = useState();
 
   useEffect(() => {
+    const regex = /^[0-9]*$/;
+    const checkId = id.match(regex);
+    if (!checkId) return history.push("/the404");
     dispatch(getOneBusiness(id));
     dispatch(reviewActions.getReviewsForBusiness(id));
-  }, [dispatch, id]);
+  }, [dispatch, id, history]);
 
   useEffect(() => {
     const avgRating = function (reviews) {
@@ -67,6 +70,7 @@ const BusinessProfile = () => {
     }
   }
 
+  // if (!business) return <Redirect to={"/the404"} />;
   return (
     <div className="oneBus-container">
       <div className="oneBus-img-container">

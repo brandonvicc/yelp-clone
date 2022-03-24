@@ -16,6 +16,7 @@ router.get(
         model: Review,
         include: User,
       },
+      order: [["updatedAt", "DESC"]],
     });
     return res.json({ businesses });
   })
@@ -31,6 +32,8 @@ router.get(
         include: User,
       },
     });
+    if (!business) throw new Error("No business found");
+    console.log("\n\n\n\n", business, "\n\n\n\n");
     return res.json({ business });
   })
 );
@@ -41,6 +44,7 @@ router.get(
     const reviews = await Review.findAll({
       where: { businessId: req.params.id },
       include: [User],
+      order: [["updatedAt", "DESC"]],
     });
     return res.json({ reviews });
   })

@@ -104,8 +104,8 @@ const reducer = (state = initialState, action) => {
       return newState;
     case UPDATE:
       newState = {
-        ...state,
         [action.review.id]: { ...action.review },
+        ...state,
       };
       return newState;
     case ONEBUS_REVIEWS:
