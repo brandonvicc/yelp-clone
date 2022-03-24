@@ -82,7 +82,6 @@ export const newBusiness = (payload) => async (dispatch) => {
   });
   if (response.ok) {
     const data = await response.json();
-    console.log(response.business);
     dispatch(addBusiness(data.business));
   }
   return response;
