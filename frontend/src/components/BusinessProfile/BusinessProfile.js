@@ -78,7 +78,15 @@ const BusinessProfile = () => {
     display = (
       <>
         <div className="oneBus-img-container">
-          <img className="oneBus-img" src={business?.img_link} alt="business" />
+          <img
+            className="oneBus-img"
+            src={business?.img_link}
+            onError={(e) =>
+              (e.target.src =
+                "https://www.kindpng.com/picc/m/164-1646889_error-png-page-something-went-wrong-png-transparent.png")
+            }
+            alt="business"
+          />
         </div>
         <div className="oneBus-info-container">
           <div className="oneBus-info-header-container">

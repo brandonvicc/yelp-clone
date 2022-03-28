@@ -8,6 +8,7 @@ const BusinessCard = ({ business }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [avg, setAvg] = useState();
+  const [imgLink, setImgLink] = useState(business.img_link);
 
   useEffect(() => {
     const avgRating = function (reviews) {
@@ -30,6 +31,7 @@ const BusinessCard = ({ business }) => {
     await dispatch(businessActions.getOneBusiness(business.id));
     history.push(`/businesses/${business.id}/edit`);
   };
+
   return (
     <li className="home-business-card">
       <NavLink
@@ -41,7 +43,11 @@ const BusinessCard = ({ business }) => {
       <div className="home-business-img-container">
         <img
           className="home-business-img"
-          src={business.img_link}
+          src={business?.img_link}
+          onError={(e) =>
+            (e.target.src =
+              "https://www.kindpng.com/picc/m/164-1646889_error-png-page-something-went-wrong-png-transparent.png")
+          }
           alt="business"
         />
       </div>
