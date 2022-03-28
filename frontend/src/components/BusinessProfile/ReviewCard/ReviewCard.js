@@ -11,6 +11,7 @@ const ReviewCard = ({ review }) => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const [showOptions, setShowOptions] = useState(false);
+  const [imgLink, setImgLink] = useState(review?.img_link);
   const curr_user = useSelector((state) => state.session.user);
 
   const toggleOptions = () => {
@@ -22,6 +23,12 @@ const ReviewCard = ({ review }) => {
     await dispatch(reviewActions.deleteOneReview(review.id));
     await dispatch(reviewActions.getReviewsForBusiness(id));
     toggleOptions();
+  };
+
+  const handleError = (e) => {
+    setImgLink(
+      "https://www.kindpng.com/picc/m/164-1646889_error-png-page-something-went-wrong-png-transparent.png"
+    );
   };
 
   let reviewOptions;
@@ -58,7 +65,11 @@ const ReviewCard = ({ review }) => {
       <div className="oneBus-review-img-container">
         <img
           className="oneBus-review-img"
-          src={review?.img_link}
+          src={review.img_link}
+          onError={(e) =>
+            (e.target.src =
+              "https://www.kindpng.com/picc/m/164-1646889_error-png-page-something-went-wrong-png-transparent.png")
+          }
           alt="review"
         />
       </div>
