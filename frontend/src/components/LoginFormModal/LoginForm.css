@@ -27,6 +27,7 @@
 
 .blue {
   color: var(--blue);
+  border: 1px solid var(--blue);
   width: 250px;
   text-align: center;
 }
@@ -34,6 +35,7 @@
 .blue:hover {
   border: 1px solid var(--blue);
   background-color: var(--blue);
+  color: white;
 }
 
 .login-input {
