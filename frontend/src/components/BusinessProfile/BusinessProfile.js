@@ -56,14 +56,17 @@ const BusinessProfile = () => {
   let actions;
   if (business?.userId === curr_user?.id) {
     actions = (
-      <div className="oneBus-info-actions">
-        <button className="oneBus-edit-btn" onClick={handleEdit}>
-          Edit
-        </button>
-        <button className="oneBus-delete-btn" onClick={handleDelete}>
-          Delete
-        </button>
-      </div>
+      <>
+        <div className="oneBus-info-actions">
+          <button className="oneBus-edit-btn" onClick={handleEdit}>
+            Edit
+          </button>
+          <button className="oneBus-delete-btn" onClick={handleDelete}>
+            Delete
+          </button>
+        </div>
+        <MapContainer lat={business?.lat} lng={business?.lng} />
+      </>
     );
   } else {
     if (curr_user) {
