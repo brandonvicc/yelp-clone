@@ -11,6 +11,8 @@ import LoginFormModal from "../LoginFormModal";
 import Footer from "../Footer/Footer";
 import * as reviewActions from "../../store/review";
 
+import MapContainer from "../MapContainer/MapContainer";
+
 const BusinessProfile = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -65,15 +67,24 @@ const BusinessProfile = () => {
     );
   } else {
     if (curr_user) {
-      actions = <ReviewCreateModal />;
+      actions = (
+        <>
+          <ReviewCreateModal />
+          <MapContainer lat={business?.lat} lng={business?.lng} />
+        </>
+      );
     } else {
-      actions = <LoginFormModal color={"-black"} />;
+      actions = (
+        <>
+          <LoginFormModal color={"-black"} />
+          <MapContainer lat={business?.lat} lng={business?.lng} />
+        </>
+      );
     }
   }
   let display;
   if (business === undefined) {
     display = <h1 className="not-found">Business Not Found</h1>;
-    console.log(display);
   } else {
     display = (
       <>

@@ -8,7 +8,6 @@ const BusinessCard = ({ business }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [avg, setAvg] = useState();
-  const [imgLink, setImgLink] = useState(business.img_link);
 
   useEffect(() => {
     const avgRating = function (reviews) {
