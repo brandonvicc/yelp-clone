@@ -67,9 +67,19 @@ const BusinessProfile = () => {
     );
   } else {
     if (curr_user) {
-      actions = <ReviewCreateModal />;
+      actions = (
+        <>
+          <ReviewCreateModal />
+          <MapContainer lat={business?.lat} lng={business?.lng} />
+        </>
+      );
     } else {
-      actions = <LoginFormModal color={"-black"} />;
+      actions = (
+        <>
+          <LoginFormModal color={"-black"} />
+          <MapContainer lat={business?.lat} lng={business?.lng} />
+        </>
+      );
     }
   }
   let display;
@@ -108,7 +118,6 @@ const BusinessProfile = () => {
                 {business?.city}, {business?.state} {business?.zipcode}{" "}
                 {business?.country}
               </p>
-              <MapContainer lat={-3.745} lng={-38.523} />
             </div>
             {business && actions}
           </div>
