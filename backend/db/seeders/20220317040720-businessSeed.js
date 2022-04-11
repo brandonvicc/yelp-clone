@@ -18,6 +18,8 @@ module.exports = {
           zipcode: "98503",
           country: "United States",
           avg_review: 0,
+          lat: 47.751076,
+          lng: -120.740135,
           img_link:
             "https://images.unsplash.com/photo-1563286094-6e420626b6f3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=875&q=80",
           createdAt: new Date(),
@@ -32,6 +34,8 @@ module.exports = {
           zipcode: "65401",
           country: "United States",
           avg_review: 0,
+          lat: 42.407211,
+          lng: -71.382439,
           img_link:
             "https://images.unsplash.com/photo-1638786245283-98cb5933c49b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80",
           createdAt: new Date(),
@@ -46,6 +50,8 @@ module.exports = {
           zipcode: "20170",
           country: "United States",
           avg_review: 0,
+          lat: 39,
+          lng: 80.5,
           img_link:
             "https://images.unsplash.com/photo-1548366086-7f1b76106622?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=376&q=80",
           createdAt: new Date(),
@@ -60,6 +66,8 @@ module.exports = {
           zipcode: "20854",
           country: "United States",
           avg_review: 0,
+          lat: 41.203323,
+          lng: -77.194527,
           img_link:
             "https://images.unsplash.com/photo-1633464129147-777bdcc97c1d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1184&q=80",
           createdAt: new Date(),
@@ -74,6 +82,8 @@ module.exports = {
           zipcode: "18201",
           country: "United States",
           avg_review: 0,
+          lat: 41.203323,
+          lng: -77.194527,
           img_link:
             "https://images.unsplash.com/photo-1601599561213-832382fd07ba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGp1Y2UlMjBzdG9yZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
           createdAt: new Date(),
@@ -88,6 +98,8 @@ module.exports = {
           zipcode: "11741",
           country: "United States",
           avg_review: 0,
+          lat: 43,
+          lng: -75,
           img_link:
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkpnYzV6_4zHMG-Y-y6g5FQICnsR0zj83pCw&usqp=CAU",
           createdAt: new Date(),
@@ -102,6 +114,8 @@ module.exports = {
           zipcode: "11221",
           country: "United States",
           avg_review: 0,
+          lat: 43,
+          lng: -75,
           img_link:
             "https://storage.googleapis.com/content.ezadtv.com/media/1/20200430_5eab189c0f762.png",
           createdAt: new Date(),
@@ -116,6 +130,8 @@ module.exports = {
           zipcode: "11741",
           country: "United States",
           avg_review: 0,
+          lat: 43,
+          lng: -75,
           img_link:
             "https://storage.googleapis.com/content.ezadtv.com/media/1/20200430_5eab189c0f762.png",
           createdAt: new Date(),
@@ -130,6 +146,8 @@ module.exports = {
           zipcode: "12341",
           country: "United States",
           avg_review: 0,
+          lat: 43,
+          lng: -75,
           img_link:
             "https://storage.googleapis.com/content.ezadtv.com/media/1/20200430_5eab191262c28.png",
           createdAt: new Date(),
@@ -144,6 +162,8 @@ module.exports = {
           zipcode: "12341",
           country: "United States",
           avg_review: 0,
+          lat: 43,
+          lng: -75,
           img_link:
             "https://estaticos.esmadrid.com/cdn/farfuture/MbtBfhVe3efxAqqu60-aKHGteupO-8lde0g2y5vLgns/mtime:1646729470/sites/default/files/styles/content_type_full/public/recursosturisticos/compras/real_madrid_gran_via_1.png?itok=JGN0tX6Q",
           createdAt: new Date(),
@@ -158,6 +178,8 @@ module.exports = {
           zipcode: "12341",
           country: "United States",
           avg_review: 0,
+          lat: 43,
+          lng: -75,
           img_link:
             "https://storage.googleapis.com/content.ezadtv.com/media/1/20200928_5f71edb8a63fd.png",
           createdAt: new Date(),
