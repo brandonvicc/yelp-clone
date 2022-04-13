@@ -30,15 +30,22 @@ const BusinessEditForm = () => {
   const [lat, setLat] = useState(business.lat);
   const [lng, setLng] = useState(business.lng);
   const [img_link, setImgLink] = useState(business.img_link);
+  // const [img_link, setImgLink] = useState(null);
   const [errors, setErrors] = useState([]);
 
   if (business.userId !== current_user?.id) {
     history.push("/");
   }
 
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImgLink(file);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("clicked edit");
     setErrors([]);
     return dispatch(
       updateBusiness({
@@ -158,13 +165,7 @@ const BusinessEditForm = () => {
         </label>
         <label className="editBus-form-label">
           <p>Image</p>
-          <input
-            type="text"
-            value={img_link}
-            onChange={(e) => setImgLink(e.target.value)}
-            required
-            className="signup-input"
-          />
+          <input type="file" onChange={updateFile} className="signup-input" />
         </label>
         <div className="editBus-btn-container">
           <input
