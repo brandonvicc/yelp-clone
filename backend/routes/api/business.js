@@ -5,6 +5,10 @@ const asyncHandler = require("express-async-handler");
 const { handleValidationErrors } = require("../../utils/validation");
 const { requireAuth, restoreUser } = require("../../utils/auth");
 const { Business, Review, User } = require("../../db/models");
+const {
+  singleMulterUpload,
+  singlePublicFileUpload,
+} = require("../../utils/awsS3");
 
 const router = express.Router();
 
@@ -89,17 +93,18 @@ const validateNewBusiness = [
     .isLength({ min: 5, max: 5 })
     .matches(/^\d{5}$/)
     .withMessage("Please provide a zipcode with 5 numbers."),
-  check("img_link")
-    .exists({ checkFalsy: true })
-    .matches(/\.(jpeg|jpg|gif|png)$/)
-    .withMessage(
-      "Please provide an image with either extensions: .jpeg .jpg .gif .png"
-    ),
+  // check("img_link")
+  //   .exists({ checkFalsy: true })
+  //   .matches(/\.(jpeg|jpg|gif|png)$/)
+  //   .withMessage(
+  //     "Please provide an image with either extensions: .jpeg .jpg .gif .png"
+  //   ),
   handleValidationErrors,
 ];
 
 router.post(
   "/",
+  singleMulterUpload("img_link"),
   validateNewBusiness,
   asyncHandler(async (req, res) => {
     const {
@@ -112,9 +117,11 @@ router.post(
       zipcode,
       lat,
       lng,
-      img_link,
       avg_review,
     } = req.body;
+
+    const businessImageUrl = await singlePublicFileUpload(req.file);
+
     const newBusiness = await Business.create({
       name,
       userId,
@@ -125,7 +132,7 @@ router.post(
       zipcode,
       lat,
       lng,
-      img_link,
+      img_link: businessImageUrl,
       avg_review,
     });
 

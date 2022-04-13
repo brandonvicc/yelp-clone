@@ -14,11 +14,16 @@ const NewBusinessForm = ({ current_user }) => {
   const [zipcode, setZipcode] = useState("");
   const [lat, setLat] = useState(0);
   const [lng, setLng] = useState(0);
-  const [img_link, setImgLink] = useState("");
+  const [img_link, setImgLink] = useState(null);
   const [errors, setErrors] = useState([]);
 
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    if (file) setImgLink(file);
+  };
 
   const handleSubmit = (e) => {
     console.log("submitted form");
@@ -144,13 +149,7 @@ const NewBusinessForm = ({ current_user }) => {
         </label>
         <label className="newBus-form-label">
           <p>Image</p>
-          <input
-            type="text"
-            value={img_link}
-            onChange={(e) => setImgLink(e.target.value)}
-            required
-            className="signup-input"
-          />
+          <input type="file" onChange={updateFile} className="signup-input" />
         </label>
         <div className="newBus-btn-container">
           <input
