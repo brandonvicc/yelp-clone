@@ -28,7 +28,6 @@ const BusinessProfile = () => {
     if (!checkId) return history.push("/the404");
     dispatch(getOneBusiness(id));
     dispatch(reviewActions.getReviewsForBusiness(id));
-    console.log(business);
   }, [dispatch, id, history]);
 
   useEffect(() => {

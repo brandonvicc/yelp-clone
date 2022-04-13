@@ -13,6 +13,13 @@ function ReviewEditForm({ reviewToEdit, closeModal, toggleOptions }) {
   const [img_link, setImgLink] = useState(reviewToEdit.img_link);
   const [errors, setErrors] = useState([]);
 
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImgLink(file);
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
@@ -80,12 +87,10 @@ function ReviewEditForm({ reviewToEdit, closeModal, toggleOptions }) {
         <label className="review-create-label">
           <p>Add an Image</p>
           <input
-            type="text"
-            value={img_link}
-            onChange={(e) => setImgLink(e.target.value)}
-            required
+            type="file"
+            onChange={updateFile}
             className="review-create-input"
-            placeholder="Add an image url"
+            required
           />
         </label>
         <label className="review-create-label">

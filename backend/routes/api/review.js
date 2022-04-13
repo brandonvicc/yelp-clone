@@ -82,21 +82,35 @@ router.delete(
 
 router.put(
   "/:id",
+  singleMulterUpload("img_link"),
   validateNewReview,
   requireAuth,
   restoreUser,
   asyncHandler(async (req, res) => {
     const id = req.body.id;
     delete req.body.id;
-    await Review.update(req.body, {
-      where: { id },
-      returning: true,
-      plain: true,
-    });
 
-    const review = await Review.findByPk(id);
+    const { userId, businessId, rating, review, img_link } = req.body;
 
-    return res.json(review);
+    let reviewImageUrl;
+    if (req.file) {
+      reviewImageUrl = await singlePublicFileUpload(req.file);
+    } else {
+      reviewImageUrl = img_link;
+    }
+
+    await Review.update(
+      { userId, businessId, rating, review, img_link: reviewImageUrl },
+      {
+        where: { id },
+        returning: true,
+        plain: true,
+      }
+    );
+
+    const editedReview = await Review.findByPk(id);
+
+    return res.json(editedReview);
   })
 );
 

@@ -76,15 +76,28 @@ export const deleteOneReview = (id) => async (dispatch) => {
   }
 };
 
-export const updateReview = (review) => async (dispatch) => {
-  const response = await csrfFetch(`/api/reviews/${review.id}`, {
+export const updateReview = (payload) => async (dispatch) => {
+  const { id, userId, businessId, rating, review, img_link } = payload;
+
+  const formData = new FormData();
+  formData.append("id", id);
+  formData.append("userId", userId);
+  formData.append("businessId", businessId);
+  formData.append("rating", rating);
+  formData.append("review", review);
+  formData.append("img_link", img_link);
+
+  const response = await csrfFetch(`/api/reviews/${payload.id}`, {
     method: "PUT",
-    body: JSON.stringify(review),
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    body: formData,
   });
 
   if (response.ok) {
     const data = await response.json();
-    dispatch(reviewUpdated(data.review));
+    dispatch(reviewUpdated(data));
   }
 };
 
