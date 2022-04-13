@@ -90,7 +90,6 @@ function ReviewEditForm({ reviewToEdit, closeModal, toggleOptions }) {
             type="file"
             onChange={updateFile}
             className="review-create-input"
-            required
           />
         </label>
         <label className="review-create-label">
