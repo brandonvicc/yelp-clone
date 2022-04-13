@@ -5,6 +5,10 @@ const asyncHandler = require("express-async-handler");
 const { handleValidationErrors } = require("../../utils/validation");
 const { requireAuth, restoreUser } = require("../../utils/auth");
 const { Review } = require("../../db/models");
+const {
+  singleMulterUpload,
+  singlePublicFileUpload,
+} = require("../../utils/awsS3");
 
 const router = express.Router();
 
@@ -23,12 +27,12 @@ const validateNewReview = [
   check("businessId")
     .exists({ checkFalsy: true })
     .withMessage("Business does not exist"),
-  check("img_link")
-    .exists({ checkFalsy: true })
-    .matches(/\.(jpeg|jpg|gif|png)$/)
-    .withMessage(
-      "Please provide an image with either extensions: .jpeg .jpg .gif .png"
-    ),
+  // check("img_link")
+  //   .exists({ checkFalsy: true })
+  //   .matches(/\.(jpeg|jpg|gif|png)$/)
+  //   .withMessage(
+  //     "Please provide an image with either extensions: .jpeg .jpg .gif .png"
+  //   ),
   check("review")
     .exists({ checkFalsy: true })
     .isLength({ min: 5, max: 255 })
@@ -44,16 +48,20 @@ const validateNewReview = [
 
 router.post(
   "/",
+  singleMulterUpload("img_link"),
   validateNewReview,
   requireAuth,
   asyncHandler(async (req, res) => {
-    const { userId, businessId, rating, review, img_link } = req.body;
+    const { userId, businessId, rating, review } = req.body;
+
+    const reviewImageUrl = await singlePublicFileUpload(req.file);
+
     const newReview = await Review.create({
       userId,
       businessId,
       rating,
       review,
-      img_link,
+      img_link: reviewImageUrl,
     });
     const reviewCreated = await Review.findByPk(newReview.id);
     return res.json({ reviewCreated });

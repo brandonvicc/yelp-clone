@@ -41,9 +41,21 @@ export const getAll = () => async (dispatch) => {
 };
 
 export const create = (payload) => async (dispatch) => {
+  const { userId, businessId, rating, review, img_link } = payload;
+
+  const formData = new FormData();
+  formData.append("userId", userId);
+  formData.append("businessId", businessId);
+  formData.append("rating", rating);
+  formData.append("review", review);
+  formData.append("img_link", img_link);
+
   const response = await csrfFetch("/api/reviews/", {
     method: "POST",
-    body: JSON.stringify(payload),
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    body: formData,
   });
 
   if (response.ok) {
