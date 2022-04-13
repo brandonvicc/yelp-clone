@@ -37,7 +37,6 @@ router.get(
       },
     });
     if (!business) throw new Error("No business found");
-    console.log("\n\n\n\n", business, "\n\n\n\n");
     return res.json({ business });
   })
 );
@@ -155,17 +154,55 @@ router.delete(
 
 router.put(
   "/:id",
+  singleMulterUpload("img_link"),
   validateNewBusiness,
   requireAuth,
   restoreUser,
   asyncHandler(async (req, res) => {
     const id = req.body.id;
     delete req.body.id;
-    await Business.update(req.body, {
-      where: { id },
-      returning: true,
-      plain: true,
-    });
+
+    const {
+      name,
+      userId,
+      address,
+      city,
+      state,
+      country,
+      zipcode,
+      lat,
+      lng,
+      avg_review,
+      img_link,
+    } = req.body;
+
+    let businessImageUrl;
+    if (req.file) {
+      businessImageUrl = await singlePublicFileUpload(req.file);
+    } else {
+      businessImageUrl = img_link;
+    }
+
+    await Business.update(
+      {
+        name,
+        userId,
+        address,
+        city,
+        state,
+        country,
+        zipcode,
+        lat,
+        lng,
+        avg_review,
+        img_link: businessImageUrl,
+      },
+      {
+        where: { id },
+        returning: true,
+        plain: true,
+      }
+    );
 
     const business = await Business.findByPk(id);
 

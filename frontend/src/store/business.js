@@ -69,7 +69,6 @@ export const getAll = () => async (dispatch) => {
   const response = await csrfFetch("/api/businesses");
   if (response.ok) {
     const data = await response.json();
-    // console.log(data);
     dispatch(allBusinesses(data));
   }
   return response;
@@ -117,9 +116,40 @@ export const newBusiness = (payload) => async (dispatch) => {
 };
 
 export const updateBusiness = (business) => async (dispatch) => {
+  const {
+    id,
+    name,
+    userId,
+    address,
+    city,
+    state,
+    country,
+    zipcode,
+    lat,
+    lng,
+    avg_review,
+    img_link,
+  } = business;
+  const formData = new FormData();
+  formData.append("id", id);
+  formData.append("name", name);
+  formData.append("userId", userId);
+  formData.append("address", address);
+  formData.append("city", city);
+  formData.append("state", state);
+  formData.append("country", country);
+  formData.append("zipcode", zipcode);
+  formData.append("lat", lat);
+  formData.append("lng", lng);
+  formData.append("avg_review", avg_review);
+  formData.append("img_link", img_link);
+
   const response = await csrfFetch(`/api/businesses/${business.id}`, {
     method: "PUT",
-    body: JSON.stringify(business),
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    body: formData,
   });
 
   if (response.ok) {
