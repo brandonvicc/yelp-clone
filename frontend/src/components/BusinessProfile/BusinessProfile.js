@@ -64,7 +64,7 @@ const BusinessProfile = () => {
             Delete
           </button>
         </div>
-        {/* <MapContainer lat={business?.lat} lng={business?.lng} /> */}
+        <MapContainer lat={business?.lat} lng={business?.lng} />
       </>
     );
   } else {
@@ -72,14 +72,14 @@ const BusinessProfile = () => {
       actions = (
         <>
           <ReviewCreateModal />
-          {/* <MapContainer lat={business?.lat} lng={business?.lng} /> */}
+          <MapContainer lat={business?.lat} lng={business?.lng} />
         </>
       );
     } else {
       actions = (
         <>
           <LoginFormModal color={"-black"} />
-          {/* <MapContainer lat={business?.lat} lng={business?.lng} /> */}
+          <MapContainer lat={business?.lat} lng={business?.lng} />
         </>
       );
     }
