@@ -6,7 +6,7 @@ const containerStyle = {
   height: "300px",
 };
 
-function MapContainer({ lat, lng, apiKey }) {
+function Maps({ lat, lng, apiKey }) {
   const center = {
     lat,
     lng,
@@ -34,4 +34,4 @@ function MapContainer({ lat, lng, apiKey }) {
   );
 }
 
-export default React.memo(MapContainer);
+export default React.memo(Maps);
