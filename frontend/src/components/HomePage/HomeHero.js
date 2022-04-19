@@ -1,3 +1,4 @@
+import Searchbar from "../Searchbar/Searchbar";
 import "./HomePage.css";
 const HomeHero = () => {
   return (
@@ -9,6 +10,7 @@ const HomeHero = () => {
             Promote Your Business!
           </h3>
           <h3 className="home-header-review blue-font">Review Businesses!</h3>
+          <Searchbar />
         </div>
         <img
           className="home-hero-img"
