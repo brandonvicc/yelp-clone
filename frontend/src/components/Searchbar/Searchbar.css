@@ -2,10 +2,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.search-home{
+    
     position: absolute;
     top: 200px;
     right: 250px;
 }
+
+/* .search-results{
+    top: 0;
+    left: 0; 
+} */
 
 .search-heading{
     display: flex;

@@ -54,6 +54,7 @@ function App() {
           <Route path="/businesses/results">
             <Navigation isLoaded={isLoaded} color={"-black"} />
             <BusinessSearch />
+            <Footer />
           </Route>
           <Route exact path="/businesses/:id">
             <Navigation isLoaded={isLoaded} color={"-black"} />

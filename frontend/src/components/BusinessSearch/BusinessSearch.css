@@ -1,0 +1,34 @@
+.searchPage-container{
+    margin: 0 auto;
+    width: 80%;
+}
+
+.searchPage-searchbar-container{
+    position: relative;
+    margin-top: 20px;
+    background-color: var(--blue);
+    width: 90%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+
+}
+
+.searchPage-results-container{
+    /* padding-top: 50px; */
+    margin-bottom: 30px;
+}
+
+.searchPage-heading{
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.no-results-container{
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

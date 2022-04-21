@@ -10,7 +10,7 @@ const HomeHero = () => {
             Promote Your Business!
           </h3>
           <h3 className="home-header-review blue-font">Review Businesses!</h3>
-          <Searchbar />
+          <Searchbar page={"search-home"} />
         </div>
         <img
           className="home-hero-img"
