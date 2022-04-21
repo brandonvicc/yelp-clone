@@ -158,6 +158,18 @@ export const updateBusiness = (business) => async (dispatch) => {
   }
 };
 
+export const businessSearch = (payload) => async (dispatch) => {
+  const response = await csrfFetch("/api/businesses/search", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(allBusinesses(data));
+  }
+};
+
 const initialState = {};
 
 function reducer(state = initialState, action) {

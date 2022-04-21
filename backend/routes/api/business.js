@@ -1,6 +1,8 @@
 const express = require("express");
 const { check } = require("express-validator");
 const asyncHandler = require("express-async-handler");
+const sequelize = require("sequelize");
+const Op = sequelize.Op;
 
 const { handleValidationErrors } = require("../../utils/validation");
 const { requireAuth, restoreUser } = require("../../utils/auth");
@@ -207,6 +209,24 @@ router.put(
     const business = await Business.findByPk(id);
 
     return res.json(business);
+  })
+);
+
+router.post(
+  "/search",
+  asyncHandler(async (req, res) => {
+    const { searchType, searchData } = req.body;
+
+    const businesses = await Business.findAll({
+      where: { name: { [Op.substring]: searchData } },
+      include: {
+        model: Review,
+        include: User,
+      },
+      order: [["updatedAt", "DESC"]],
+    });
+
+    return res.json({ businesses });
   })
 );
 

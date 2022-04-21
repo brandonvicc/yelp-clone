@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { useParams, useHistory, Redirect } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { deleteOneBusiness, getOneBusiness } from "../../store/business";
 import "./BusinessProfile.css";
 import ReviewCard from "./ReviewCard/ReviewCard";
