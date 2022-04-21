@@ -51,6 +51,13 @@ const Searchbar = () => {
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </button>
         </form>
+        <ul className="error-list">
+          {errors.map((error, idx) => (
+            <li className="error-list-item" key={idx}>
+              {error}
+            </li>
+          ))}
+        </ul>
       </div>
     </>
   );
