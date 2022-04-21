@@ -11,6 +11,7 @@ import NewBusiness from "./components/NewBusiness/NewBusiness";
 import BusinessEditPage from "./components/BusinessEditPage/BusinessEditPage";
 import BusinessProfile from "./components/BusinessProfile/BusinessProfile";
 import Footer from "./components/Footer/Footer";
+import BusinessSearch from "./components/BusinessSearch/BusinessSearch";
 // import { Modal } from "./context/Modal";
 function App() {
   const dispatch = useDispatch();
@@ -49,6 +50,10 @@ function App() {
           <Route path="/businesses/:id/edit">
             <Navigation isLoaded={isLoaded} color={"-black"} />
             <BusinessEditPage />
+          </Route>
+          <Route path="/businesses/results">
+            <Navigation isLoaded={isLoaded} color={"-black"} />
+            <BusinessSearch />
           </Route>
           <Route exact path="/businesses/:id">
             <Navigation isLoaded={isLoaded} color={"-black"} />
