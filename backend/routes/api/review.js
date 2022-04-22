@@ -4,7 +4,7 @@ const asyncHandler = require("express-async-handler");
 
 const { handleValidationErrors } = require("../../utils/validation");
 const { requireAuth, restoreUser } = require("../../utils/auth");
-const { Review } = require("../../db/models");
+const { Like } = require("../../db/models");
 const {
   singleMulterUpload,
   singlePublicFileUpload,
@@ -15,7 +15,13 @@ const router = express.Router();
 router.get(
   "/",
   asyncHandler(async (req, res) => {
-    const reviews = await Review.findAll({ order: [["updatedAt", "DESC"]] });
+    const reviews = await Review.findAll({
+      include: {
+        model: Like,
+        include: User,
+      },
+      order: [["updatedAt", "DESC"]],
+    });
     return res.json({ reviews });
   })
 );

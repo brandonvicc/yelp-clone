@@ -6,7 +6,7 @@ const Op = sequelize.Op;
 
 const { handleValidationErrors } = require("../../utils/validation");
 const { requireAuth, restoreUser } = require("../../utils/auth");
-const { Business, Review, User } = require("../../db/models");
+const { Business, Review, User, Like } = require("../../db/models");
 const {
   singleMulterUpload,
   singlePublicFileUpload,
@@ -48,7 +48,7 @@ router.get(
   asyncHandler(async (req, res) => {
     const reviews = await Review.findAll({
       where: { businessId: req.params.id },
-      include: [User],
+      include: [User, Like],
       order: [["updatedAt", "DESC"]],
     });
     return res.json({ reviews });
