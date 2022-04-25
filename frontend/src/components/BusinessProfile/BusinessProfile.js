@@ -84,6 +84,24 @@ const BusinessProfile = () => {
       );
     }
   }
+
+  let reviewList;
+  if (reviews?.length) {
+    reviewList = (
+      <ul className="oneBus-review-list">
+        {reviews?.map((review, idx) => (
+          <ReviewCard key={idx} review={review} />
+        ))}
+      </ul>
+    );
+  } else {
+    reviewList = (
+      <ul className="oneBus-review-list">
+        <h3 className="oneBus-review-noList">This business has no reviews</h3>
+      </ul>
+    );
+  }
+
   let display;
   if (business === undefined) {
     display = <h1 className="not-found">Business Not Found</h1>;
@@ -126,11 +144,7 @@ const BusinessProfile = () => {
         </div>
         <div className="oneBus-review-container">
           <h3 className="oneBus-review-content-header blue-font">Reviews</h3>
-          <ul className="oneBus-review-list">
-            {reviews?.map((review, idx) => (
-              <ReviewCard key={idx} review={review} />
-            ))}
-          </ul>
+          {reviews && reviewList}
         </div>
       </>
     );
