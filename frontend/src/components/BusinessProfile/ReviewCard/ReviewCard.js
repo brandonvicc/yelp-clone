@@ -95,7 +95,7 @@ const ReviewCard = ({ review }) => {
         <div className="oneBus-review-content-likes">
           <form method="post" onSubmit={handleLike}>
             <button type="submit" className="oneBus-review-content-likes-btn">
-              {review?.Likes.length} <FontAwesomeIcon icon={faThumbsUp} />{" "}
+              {review?.Likes?.length} <FontAwesomeIcon icon={faThumbsUp} />{" "}
             </button>
           </form>
         </div>
