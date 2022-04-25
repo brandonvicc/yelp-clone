@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       Review.belongsTo(models.Business, {
         foreignKey: "businessId",
       });
+      Review.hasMany(models.Like, { foreignKey: "reviewId" });
     }
   }
   Review.init(
