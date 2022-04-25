@@ -13,7 +13,11 @@ module.exports = (sequelize, DataTypes) => {
       Review.belongsTo(models.Business, {
         foreignKey: "businessId",
       });
-      Review.hasMany(models.Like, { foreignKey: "reviewId" });
+      Review.hasMany(models.Like, {
+        foreignKey: "reviewId",
+        onDelete: "cascade",
+        hooks: true,
+      });
     }
   }
   Review.init(

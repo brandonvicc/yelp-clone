@@ -4,7 +4,7 @@ const asyncHandler = require("express-async-handler");
 
 const { handleValidationErrors } = require("../../utils/validation");
 const { requireAuth, restoreUser } = require("../../utils/auth");
-const { Like, Review } = require("../../db/models");
+const { Like, Review, User, Business } = require("../../db/models");
 const {
   singleMulterUpload,
   singlePublicFileUpload,
