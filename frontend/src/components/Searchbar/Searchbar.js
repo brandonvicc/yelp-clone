@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 import { businessSearch } from "../../store/business";
 
 const Searchbar = ({ page }) => {
-  const [searchType, setSearchType] = useState("business");
+  const [searchType, setSearchType] = useState("name");
   const [searchData, setSearchData] = useState("");
   const [errors, setErrors] = useState([]);
   const dispatch = useDispatch();

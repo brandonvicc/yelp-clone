@@ -6,10 +6,71 @@ import { newBusiness } from "../../../store/business";
 import "./NewBusinessForm.css";
 
 const NewBusinessForm = ({ current_user }) => {
+  const states = [
+    "Alabama",
+    "Alaska",
+    "American Samoa",
+    "Arizona",
+    "Arkansas",
+    "California",
+    "Colorado",
+    "Connecticut",
+    "Delaware",
+    "District of Columbia",
+    "Federated States of Micronesia",
+    "Florida",
+    "Georgia",
+    "Guam",
+    "Hawaii",
+    "Idaho",
+    "Illinois",
+    "Indiana",
+    "Iowa",
+    "Kansas",
+    "Kentucky",
+    "Louisiana",
+    "Maine",
+    "Marshall Islands",
+    "Maryland",
+    "Massachusetts",
+    "Michigan",
+    "Minnesota",
+    "Mississippi",
+    "Missouri",
+    "Montana",
+    "Nebraska",
+    "Nevada",
+    "New Hampshire",
+    "New Jersey",
+    "New Mexico",
+    "New York",
+    "North Carolina",
+    "North Dakota",
+    "Northern Mariana Islands",
+    "Ohio",
+    "Oklahoma",
+    "Oregon",
+    "Palau",
+    "Pennsylvania",
+    "Puerto Rico",
+    "Rhode Island",
+    "South Carolina",
+    "South Dakota",
+    "Tennessee",
+    "Texas",
+    "Utah",
+    "Vermont",
+    "Virgin Island",
+    "Virginia",
+    "Washington",
+    "West Virginia",
+    "Wisconsin",
+    "Wyoming",
+  ];
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
-  const [state, setState] = useState("");
+  const [state, setState] = useState(states[0]);
   const [country, setCountry] = useState("");
   const [zipcode, setZipcode] = useState("");
   const [lat, setLat] = useState(0);
@@ -96,13 +157,18 @@ const NewBusinessForm = ({ current_user }) => {
         </label>
         <label className="newBus-form-label">
           <p>State</p>
-          <input
-            type="text"
+          <select
             value={state}
+            name="state"
+            id="state"
             onChange={(e) => setState(e.target.value)}
             required
             className="signup-input"
-          />
+          >
+            {states.map((state) => (
+              <option value={state}>{state}</option>
+            ))}
+          </select>
         </label>
         <label className="newBus-form-label">
           <p>Zipcode</p>
