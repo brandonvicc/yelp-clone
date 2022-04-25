@@ -26,6 +26,14 @@ const ReviewCard = ({ review }) => {
     toggleOptions();
   };
 
+  let currLikes = false;
+  for (let i = 0; i < review?.Likes?.length; i++) {
+    let like = review?.Likes[i];
+    if (like.userId === curr_user.id) {
+      currLikes = true;
+    }
+  }
+
   let reviewOptions;
   if (curr_user?.id === review?.userId) {
     reviewOptions = (
@@ -88,7 +96,11 @@ const ReviewCard = ({ review }) => {
     likeOptions = (
       <form method="post" onSubmit={handleLike}>
         <button type="submit" className="oneBus-review-content-likes-btn">
-          {review?.Likes?.length} <FontAwesomeIcon icon={faThumbsUp} />{" "}
+          {review?.Likes?.length}{" "}
+          <FontAwesomeIcon
+            className={currLikes ? "user-liked" : ""}
+            icon={faThumbsUp}
+          />{" "}
         </button>
       </form>
     );
