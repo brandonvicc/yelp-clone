@@ -1,11 +1,13 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 const { Business, Review, User, Like } = require("../../db/models");
+const { requireAuth } = require("../../utils/auth");
 
 const router = express.Router();
 
 router.post(
   "/",
+  requireAuth,
   asyncHandler(async (req, res) => {
     const { userId, reviewId, businessId } = req.body;
     let toDestroy;

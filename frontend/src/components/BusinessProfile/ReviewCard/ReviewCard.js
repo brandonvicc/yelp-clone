@@ -3,13 +3,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsis, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import * as reviewActions from "../../../store/review";
 import ReviewEditModal from "../../ReviewEditModal";
 
 const ReviewCard = ({ review }) => {
   const dispatch = useDispatch();
   const { id } = useParams();
+  const history = useHistory();
   const [showOptions, setShowOptions] = useState(false);
   // const [imgLink, setImgLink] = useState(review?.img_link);
   const curr_user = useSelector((state) => state.session.user);
@@ -73,6 +74,26 @@ const ReviewCard = ({ review }) => {
       });
   };
 
+  let likeOptions;
+  if (!curr_user) {
+    likeOptions = (
+      <button
+        onClick={(e) => history.push("/signup")}
+        className="oneBus-review-content-likes-btn"
+      >
+        {review?.Likes?.length} <FontAwesomeIcon icon={faThumbsUp} />{" "}
+      </button>
+    );
+  } else {
+    likeOptions = (
+      <form method="post" onSubmit={handleLike}>
+        <button type="submit" className="oneBus-review-content-likes-btn">
+          {review?.Likes?.length} <FontAwesomeIcon icon={faThumbsUp} />{" "}
+        </button>
+      </form>
+    );
+  }
+
   return (
     <li className="oneBus-review-card">
       <div className="oneBus-review-img-container">
@@ -93,11 +114,7 @@ const ReviewCard = ({ review }) => {
         {curr_user && reviewOptions}
         <p className="oneBus-review-content-rating">Rating: {review?.rating}</p>
         <div className="oneBus-review-content-likes">
-          <form method="post" onSubmit={handleLike}>
-            <button type="submit" className="oneBus-review-content-likes-btn">
-              {review?.Likes?.length} <FontAwesomeIcon icon={faThumbsUp} />{" "}
-            </button>
-          </form>
+          {review && likeOptions}
         </div>
         <div className="oneBus-review-content-created">
           Created At:
