@@ -96,10 +96,8 @@ const validateNewBusiness = [
     .withMessage("Please provide a zipcode with 5 numbers."),
   // check("img_link")
   //   .exists({ checkFalsy: true })
-  //   .matches(/\.(jpeg|jpg|gif|png)$/)
-  //   .withMessage(
-  //     "Please provide an image with either extensions: .jpeg .jpg .gif .png"
-  //   ),
+  //   // .matches(/\.(jpeg|jpg|gif|png)$/)
+  //   .withMessage("Please provide an image"),
   handleValidationErrors,
 ];
 
@@ -216,15 +214,38 @@ router.post(
   "/search",
   asyncHandler(async (req, res) => {
     const { searchType, searchData } = req.body;
+    let businesses;
 
-    const businesses = await Business.findAll({
-      where: { name: { [Op.substring]: searchData } },
-      include: {
-        model: Review,
-        include: User,
-      },
-      order: [["updatedAt", "DESC"]],
-    });
+    if (searchType === "name") {
+      businesses = await Business.findAll({
+        where: { name: { [Op.substring]: searchData } },
+        include: {
+          model: Review,
+          include: User,
+        },
+        order: [["updatedAt", "DESC"]],
+      });
+    }
+    if (searchType === "state") {
+      businesses = await Business.findAll({
+        where: { state: { [Op.substring]: searchData } },
+        include: {
+          model: Review,
+          include: User,
+        },
+        order: [["updatedAt", "DESC"]],
+      });
+    }
+    if (searchType === "zipcode") {
+      businesses = await Business.findAll({
+        where: { zipcode: { [Op.substring]: searchData } },
+        include: {
+          model: Review,
+          include: User,
+        },
+        order: [["updatedAt", "DESC"]],
+      });
+    }
 
     return res.json({ businesses });
   })
