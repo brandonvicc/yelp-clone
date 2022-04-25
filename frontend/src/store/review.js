@@ -76,6 +76,19 @@ export const deleteOneReview = (id) => async (dispatch) => {
   }
 };
 
+export const addLike = (payload) => async (dispatch) => {
+  const { userId, reviewId, businessId } = payload;
+  const response = await csrfFetch(`/api/likes/`, {
+    method: "POST",
+    body: JSON.stringify({ reviewId, userId, businessId }),
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(reviewsForBusiness(data));
+  }
+};
+
 export const updateReview = (payload) => async (dispatch) => {
   const { id, userId, businessId, rating, review, img_link } = payload;
 

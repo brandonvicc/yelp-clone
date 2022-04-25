@@ -1,6 +1,6 @@
 import "./ReviewCard.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
+import { faEllipsis, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -54,6 +54,25 @@ const ReviewCard = ({ review }) => {
     );
   }
 
+  const handleLike = async (e) => {
+    e.preventDefault();
+    return dispatch(
+      reviewActions.addLike({
+        userId: curr_user?.id,
+        businessId: id,
+        reviewId: review?.id,
+      })
+    )
+      .then(
+        async (data) => await dispatch(reviewActions.getReviewsForBusiness(id))
+      )
+      .catch(async (res) => {
+        // const data = await res.json();
+        console.log(res);
+        // if (data && data.errors) setErrors(data.errors);
+      });
+  };
+
   return (
     <li className="oneBus-review-card">
       <div className="oneBus-review-img-container">
@@ -73,6 +92,13 @@ const ReviewCard = ({ review }) => {
         </h3>
         {curr_user && reviewOptions}
         <p className="oneBus-review-content-rating">Rating: {review?.rating}</p>
+        <div className="oneBus-review-content-likes">
+          <form method="post" onSubmit={handleLike}>
+            <button type="submit" className="oneBus-review-content-likes-btn">
+              {review?.Likes.length} <FontAwesomeIcon icon={faThumbsUp} />{" "}
+            </button>
+          </form>
+        </div>
         <div className="oneBus-review-content-created">
           Created At:
           <p> {new Date(review?.createdAt).toDateString()}</p>
