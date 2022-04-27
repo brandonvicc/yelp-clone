@@ -152,7 +152,6 @@ const BusinessProfile = () => {
   return (
     <div className="oneBus-container">
       {display}
-      <MapContainer lat={business?.lat} lng={business?.lng} />
       <Footer />
     </div>
   );

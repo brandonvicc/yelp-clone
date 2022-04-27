@@ -64,3 +64,14 @@ textarea:focus {
   text-align: center;
   margin: 250px auto;
 }
+
+
+
+.red {
+  color: red;
+  border: 2px solid red;
+}
+.green {
+  color: green;
+  border: 2px solid green;
+}
