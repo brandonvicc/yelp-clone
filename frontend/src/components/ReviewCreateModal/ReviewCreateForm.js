@@ -81,7 +81,10 @@ function ReviewCreateForm({ toggleModal }) {
           </select>
         </label>
         <label className="review-create-label">
-          <p>Add an Image</p>
+          <p>
+            Add an Image{" "}
+            <span className="optional">(Must add a picture to continue)</span>
+          </p>
           <input
             type="file"
             onChange={updateFile}

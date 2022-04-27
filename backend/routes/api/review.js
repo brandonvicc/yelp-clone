@@ -4,7 +4,7 @@ const asyncHandler = require("express-async-handler");
 
 const { handleValidationErrors } = require("../../utils/validation");
 const { requireAuth, restoreUser } = require("../../utils/auth");
-const { Like, Review, User, Business } = require("../../db/models");
+const { Like, Review, User } = require("../../db/models");
 const {
   singleMulterUpload,
   singlePublicFileUpload,
@@ -96,13 +96,15 @@ router.put(
     const id = req.body.id;
     delete req.body.id;
 
-    const { userId, businessId, rating, review, img_link } = req.body;
+    const { userId, businessId, rating, review } = req.body;
+
+    let editedReview = await Review.findByPk(id);
 
     let reviewImageUrl;
     if (req.file) {
       reviewImageUrl = await singlePublicFileUpload(req.file);
     } else {
-      reviewImageUrl = img_link;
+      reviewImageUrl = editedReview.img_link;
     }
 
     await Review.update(
@@ -114,7 +116,7 @@ router.put(
       }
     );
 
-    const editedReview = await Review.findByPk(id);
+    editedReview = await Review.findByPk(id);
 
     return res.json(editedReview);
   })

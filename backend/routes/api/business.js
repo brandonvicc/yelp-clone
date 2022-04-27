@@ -182,14 +182,15 @@ router.put(
       lat,
       lng,
       avg_review,
-      img_link,
     } = req.body;
+
+    let business = await Business.findByPk(id);
 
     let businessImageUrl;
     if (req.file) {
       businessImageUrl = await singlePublicFileUpload(req.file);
     } else {
-      businessImageUrl = img_link;
+      businessImageUrl = business.img_link;
     }
 
     await Business.update(
@@ -213,7 +214,7 @@ router.put(
       }
     );
 
-    const business = await Business.findByPk(id);
+    business = await Business.findByPk(id);
 
     return res.json(business);
   })
