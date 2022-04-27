@@ -98,6 +98,15 @@ const validateNewBusiness = [
   //   .exists({ checkFalsy: true })
   //   // .matches(/\.(jpeg|jpg|gif|png)$/)
   //   .withMessage("Please provide an image"),
+  // check('fileInputFieldName')
+  // .custom((value, { req }) => {
+  //   if (req.files.mimetype === "application/pdf") {
+  //     return ".pdf"; // return "non-falsy" value to indicate valid data"
+  //   } else {
+  //     return false; // return "falsy" value to indicate invalid data
+  //   }
+  // })
+  // .withMessage("Please only submit pdf documents."),
   handleValidationErrors,
 ];
 

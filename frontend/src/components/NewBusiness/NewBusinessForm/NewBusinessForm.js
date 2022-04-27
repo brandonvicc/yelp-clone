@@ -165,8 +165,10 @@ const NewBusinessForm = ({ current_user }) => {
             required
             className="signup-input"
           >
-            {states.map((state) => (
-              <option value={state}>{state}</option>
+            {states.map((state, idx) => (
+              <option key={idx} value={state}>
+                {state}
+              </option>
             ))}
           </select>
         </label>
@@ -214,13 +216,22 @@ const NewBusinessForm = ({ current_user }) => {
           />
         </label>
         <label className="newBus-form-label">
-          <p>Image</p>
-          <input type="file" onChange={updateFile} className="signup-input" />
+          <p>
+            Image{" "}
+            <span className="optional">(Must add a picture to continue)</span>
+          </p>
+          <input
+            type="file"
+            onChange={updateFile}
+            className={img_link ? "signup-input green" : "signup-input red"}
+            required
+          />
         </label>
         <div className="newBus-btn-container">
           <input
             className="newBus-submit-btn"
-            type="submit"
+            type={img_link ? "submit" : "disabled red"}
+            // type="submit"
             value="Add your Business"
           />
         </div>

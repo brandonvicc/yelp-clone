@@ -39,8 +39,8 @@ function ReviewCreateForm({ toggleModal }) {
       })
       .catch(async (res) => {
         console.log(res);
-        // const data = await res.json();
-        // if (data && data.errors) setErrors(data.errors);
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
       });
   };
 
@@ -85,7 +85,10 @@ function ReviewCreateForm({ toggleModal }) {
           <input
             type="file"
             onChange={updateFile}
-            className="review-create-input"
+            className={
+              img_link ? "review-create-input green" : "review-create-input red"
+            }
+            // className="review-create-input"
           />
         </label>
         <label className="review-create-label">
@@ -100,9 +103,11 @@ function ReviewCreateForm({ toggleModal }) {
           ></textarea>
         </label>
 
-        <button className="review-create-btn blue-btn" type="submit">
-          Add Review
-        </button>
+        <input
+          className="review-create-btn blue-btn"
+          type={img_link ? "submit" : "disabled red"}
+          value="Add Review"
+        />
       </form>
     </div>
   );
