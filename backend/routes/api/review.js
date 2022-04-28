@@ -8,6 +8,7 @@ const { Like, Review, User } = require("../../db/models");
 const {
   singleMulterUpload,
   singlePublicFileUpload,
+  deleteFile,
 } = require("../../utils/awsS3");
 
 const router = express.Router();
@@ -103,6 +104,7 @@ router.put(
     let reviewImageUrl;
     if (req.file) {
       reviewImageUrl = await singlePublicFileUpload(req.file);
+      await deleteFile(editedReview.img_link.split("com/")[1]);
     } else {
       reviewImageUrl = editedReview.img_link;
     }
