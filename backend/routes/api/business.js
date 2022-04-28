@@ -10,6 +10,8 @@ const { Business, Review, User, Like } = require("../../db/models");
 const {
   singleMulterUpload,
   singlePublicFileUpload,
+  retrievePrivateFile,
+  deleteFile,
 } = require("../../utils/awsS3");
 
 const router = express.Router();
@@ -189,6 +191,7 @@ router.put(
     let businessImageUrl;
     if (req.file) {
       businessImageUrl = await singlePublicFileUpload(req.file);
+      await deleteFile(business.img_link.split("com/")[1]);
     } else {
       businessImageUrl = business.img_link;
     }
