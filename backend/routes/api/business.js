@@ -157,6 +157,7 @@ router.delete(
   asyncHandler(async (req, res) => {
     const business = await Business.findByPk(req.params.id);
     if (!business) throw new Error("No business with that id");
+    await deleteFile(business.img_link.split("com/")[1]);
     await business.destroy();
 
     return res.json({ business });

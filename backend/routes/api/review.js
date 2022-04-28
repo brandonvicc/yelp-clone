@@ -81,6 +81,7 @@ router.delete(
   asyncHandler(async (req, res) => {
     const review = await Review.findByPk(req.params.id);
     if (!review) throw new Error("No review with that id");
+    await deleteFile(review.img_link.split("com/")[1]);
     Review.destroy({ where: { id: review.id } });
 
     return res.json({ review });
