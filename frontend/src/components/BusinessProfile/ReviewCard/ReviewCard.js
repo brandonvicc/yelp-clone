@@ -29,7 +29,7 @@ const ReviewCard = ({ review }) => {
   let currLikes = false;
   for (let i = 0; i < review?.Likes?.length; i++) {
     let like = review?.Likes[i];
-    if (like.userId === curr_user.id) {
+    if (like?.userId === curr_user?.id) {
       currLikes = true;
     }
   }

@@ -185,8 +185,10 @@ const BusinessEditForm = () => {
             required
             className="signup-input"
           >
-            {states.map((state) => (
-              <option value={state}>{state}</option>
+            {states.map((state, idx) => (
+              <option key={idx} value={state}>
+                {state}
+              </option>
             ))}
           </select>
         </label>
