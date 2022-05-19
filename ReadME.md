@@ -64,5 +64,40 @@ Create / Read
 
 
 
- 
+ ## Install Instructions
+# Installation
+ Clone the repo
+```
+git clone https://github.com/brandonvicc/yelp-clone.git
+```
+Install dependencies from the root directory.
+```
+cd frontend > npm install
+cd backend > npm install
+```
+Create a POSTGRESQL user with CREATEDB and PASSWORD in PSQL.
+```
+  CREATE USER <name> WITH CREATEDB PASSWORD <'password'>
+```
+Create a .env file base on the .env.example given in the backend folder
 
+Enter your username and password information into you .env file along with your desired database name, a secured combination of characters for your JWT_SECRET, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, Google Maps Api MAPS_API_KEY and your desired PORT (preferably 5000).
+
+Add the following proxy to your package.json file with your front end directory, replacing or keeping the 5000 port to match your PORT configuration found in your .env file.
+```
+  "proxy": "http://localhost:5000"
+```
+Create Database, Migrate, and Seed models.
+```
+  npx dotenv sequelize db:create
+  npx dotenv sequelize db:migrate
+  npx dotenv sequelize db:seed:all
+```
+Start the services in the back end directory.
+```
+  npm start
+```
+Start the services in the front end directory, which should open the project in your default broswer. If not naviagte to http://localhost:3000
+```
+  npm start
+```
