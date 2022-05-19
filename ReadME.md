@@ -27,4 +27,9 @@ Yalp! has Sequelize integrated as the ORM. Sequelize makes interacting with the 
 
 Create / Read
  ![business-create-view](https://user-images.githubusercontent.com/75706553/169176676-de2cc0f6-0e4e-49a1-9648-f3ddf06f2e91.gif)
+ 
+ Edit / Delete
+ ![business-edit-delete](https://user-images.githubusercontent.com/75706553/169227644-084f8716-919d-4efb-8842-48c5133ffd8d.gif)
+
+ 
 
