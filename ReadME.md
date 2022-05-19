@@ -21,6 +21,9 @@ Yalp! uses PostgreSQL as the database because of it reliability and ease of use 
 ### Sequelize
 Yalp! has Sequelize integrated as the ORM. Sequelize makes interacting with the database throughout the app really easy.
 
+### S3
+Yalp! utilizes S3 so users can add files from their computer.
+
 ## Features
 
 ### Business
@@ -49,8 +52,16 @@ Create / Read
  Edit / Delete
  
  ![review-edit-delete](https://user-images.githubusercontent.com/75706553/169235944-212bb563-8510-47f9-b409-ef14144f7698.gif)
-
  
+ ### Likes
+ 
+ Create / Delete
+ ![like-create-delete](https://user-images.githubusercontent.com/75706553/169240209-291e2854-2ed4-40fa-b1a9-eda9f9a704c7.gif)
+ 
+ ### Search
+ 
+ ![search](https://user-images.githubusercontent.com/75706553/169242855-ebf5e7f6-5939-48bf-a066-af9c03c2b9fd.gif)
+
 
 
  
