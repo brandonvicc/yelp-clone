@@ -63,8 +63,6 @@ Create / Read
  ![search](https://user-images.githubusercontent.com/75706553/169242855-ebf5e7f6-5939-48bf-a066-af9c03c2b9fd.gif)
 
 
-
- ## Install Instructions
 # Installation
  Clone the repo
 ```
