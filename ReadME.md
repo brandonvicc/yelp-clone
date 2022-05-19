@@ -21,5 +21,10 @@ Yalp! uses PostgreSQL as the database because of it reliability and ease of use 
 ### Sequelize
 Yalp! has Sequelize integrated as the ORM. Sequelize makes interacting with the database throughout the app really easy.
 
-## Future Steps
-Yalp! in the future will have a google api for businesses to share their pinpoint locations with the potiential customers. Also will have AWS implemented so that people who are posting businesses or reviews do not have to post a link but an actual image from their computer. A Search Feature if you would like to find a business you attended and want to make a reviews. Then a Like feature for the reviews so people can like relatable reviews or reviews they think are true.
+## Features
+
+# Business
+
+Create / Read
+ ![business-create-view](https://user-images.githubusercontent.com/75706553/169176676-de2cc0f6-0e4e-49a1-9648-f3ddf06f2e91.gif)
+
